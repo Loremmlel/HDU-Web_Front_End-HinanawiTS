@@ -1,0 +1,49 @@
+<div class="post">
+                    <table class="post_main" style="width: 1160px; border: 0; padding: 0; border-spacing: 0;">
+                        <tbody>
+                            <tr>
+                                <td class="post_top_img" style="background-image: url(img/post01.gif);background-repeat: repeat-x;height:8px;" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="post_left_img" style="background-image: url(img/post04.gif);background-repeat: repeat-y;width: 13px;">
+                                </td>
+                                <td class="post_article" style="text-align: left;word-break: break-all;background-color: white">
+                                    <div class="post_title" style="text-align: center;"><a href="http://www.hinanawits.com/3.html" style="text-decoration: none;color: inherit;">标题</a></div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div class="post_body" >
+                                                    正文
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="post_dot" style="background-image: url(img/dot.gif);background-repeat: repeat-x;height: 10px;">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="post_tail" style="text-align: right; font-size:smaller;">
+                                                    <a class="post_tag" href="http://www.hinanawits.com/tag_lovemaster.html" style="text-decoration: none;">年彬文章</a>
+                                                    <a class="post_sharp" href="http://www.hinanawits.com/3.html" style="text-decoration: none;">#</a>
+                                                    <span class="author">
+                                                        by 作者名字
+                                                    </span>
+                                                    <span class="time">
+                                                        <a class="post_time" href="http://www.hinanawits.com/年份.html" style="text-decoration: none;">年份</a>-月份-日-具体时间
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="post_right_img" style="background-image: url(img/post02.gif);background-repeat: repeat-y;width: 13px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="post_bottom_img" style="background-image: url(img/post03.gif);background-repeat: repeat-x;height:15px;" colspan="3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="blank" style="height: 200px;"></div>
+                </div>
