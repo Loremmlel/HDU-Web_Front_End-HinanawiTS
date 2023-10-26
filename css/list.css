@@ -23,60 +23,38 @@
     text-align: center;
     padding: 30px;
 }
-.post_main{
+.tag_main{
     width: 1160px;
-    border:0;
+    border: 0;
     padding: 0;
     border-spacing: 0;
 }
-.post_top_img{
+.tag_top_img{
     background-image: url(../img/post01.gif);
     background-repeat: repeat-x;
     height:8px;
 }
-.post_left_img{
+.tag_left_img{
     background-image: url(../img/post04.gif);
     background-repeat: repeat-y;
     width: 13px;
 }
-.post_article{
-    text-align: left;
-    word-break: break-all;
+.tag_middle{
     background-color: white;
+    word-break: break-all;
 }
-.post_title{
-    text-align: center;
-}
-.post_dot{
-    background-image: url(../img/dot.gif);
-    background-repeat: repeat-x;
-    height: 10px;
-}
-.post_tail{
-    text-align: right;
-    font-size: smaller;
-}
-.post_tag{
+.tag{
     text-decoration: none;
 }
-.post_sharp{
-    text-decoration: none;
-}
-.post_time{
-    text-decoration: none;
-}
-.post_right_img{
+.tag_right_img{
     background-image: url(../img/post02.gif);
     background-repeat: repeat-y;
     width: 13px;
 }
-.post_bottom_img{
+.tag_bottom_img{
     background-image: url(../img/post03.gif);
     background-repeat: repeat-x;
-    height: 15px;
-}
-.blank{
-    height: 200px;
+    height:15px;
 }
 .middle{
     width: 20%;
