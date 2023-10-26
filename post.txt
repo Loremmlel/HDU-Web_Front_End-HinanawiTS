@@ -8,7 +8,7 @@
                                 <td class="post_left_img" style="background-image: url(img/post04.gif);background-repeat: repeat-y;width: 13px;">
                                 </td>
                                 <td class="post_article" style="text-align: left;word-break: break-all;background-color: white">
-                                    <div class="post_title" style="text-align: center;"><a href="http://www.hinanawits.com/3.html" style="text-decoration: none;color: inherit;">标题</a></div>
+                                    <div class="post_title" style="text-align: center;"><a class="hidden_link" href="http://www.hinanawits.com/3.html" style="text-decoration: none;color: inherit;">标题</a></div>
                                     <table>
                                         <tr>
                                             <td>

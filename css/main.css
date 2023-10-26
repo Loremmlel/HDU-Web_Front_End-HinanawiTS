@@ -1,0 +1,129 @@
+.body{
+    background-image: url(../img/简约背景.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.header{
+    width: auto;
+    height: 200px;
+}
+.title{
+    text-align: right;
+}
+.main{
+    border: 0;
+    border-spacing: 0;
+    padding: 0;
+}
+.left_blank{
+    text-align: center;
+    padding: 30px;
+}
+.post_main{
+    width: 1160px;
+    border:0;
+    padding: 0;
+    border-spacing: 0;
+}
+.post_top_img{
+    background-image: url(../img/post01.gif);
+    background-repeat: repeat-x;
+    height:8px;
+}
+.post_left_img{
+    background-image: url(../img/post04.gif);
+    background-repeat: repeat-y;
+    width: 13px;
+}
+.post_article{
+    text-align: left;
+    word-break: break-all;
+    background-color: white;
+}
+.post_title{
+    text-align: center;
+}
+.hidden_link{
+    text-decoration: none;
+    color: inherit;
+}
+.post_dot{
+    background-image: url(../img/dot.gif);
+    background-repeat: repeat-x;
+    height: 10px;
+}
+.post_tail{
+    text-align: right;
+    font-size: smaller;
+}
+.post_tag{
+    text-decoration: none;
+}
+.post_sharp{
+    text-decoration: none;
+}
+.post_time{
+    text-decoration: none;
+}
+.post_right_img{
+    background-image: url(../img/post02.gif);
+    background-repeat: repeat-y;
+    width: 13px;
+}
+.post_bottom_img{
+    background-image: url(../img/post03.gif);
+    background-repeat: repeat-x;
+    height: 15px;
+}
+.blank{
+    height: 200px;
+}
+.middle{
+    width: 20%;
+    visibility: hidden;
+}
+.right{
+    float: right;
+    background-color: white;
+
+}
+.navigation{
+    border: 0;
+    padding: 0;
+    border-spacing: 0;
+    margin-top: -10px;
+}
+.menu_left_img{
+    background-image: url(../img/menuright04.gif);
+    background-repeat: repeat-y;
+    width: 17px;
+}
+.menu{
+    width: 150px;
+}
+.profile_text{
+    font-size: small;
+    text-align: center;
+}
+.tag_title{
+    font-size: smaller;
+    text-align: center;
+
+}
+.tag{
+    font-size: small;
+    text-align: center;
+}
+.time_title{
+    font-size: smaller;
+    text-align: center;
+}
+.time{
+    font-size: small;
+    text-align: center;
+}
+.menu_right_img{
+    background-image: url(../img/menuright02.gif);
+    background-repeat: repeat-y;
+    width: 20px;
+}
