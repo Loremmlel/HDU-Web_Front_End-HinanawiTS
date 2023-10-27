@@ -5,7 +5,7 @@ $admin = 'hinanawiTS';
 $ad_password = 'Loremmlel.192212';
 if($account == $admin && $password == $ad_password)
 {
-    header('Location: http://www.hinanawits.com/backstage.html');
+    header('Location: http://www.hinanawits.com/backstage');
     exit;
 }
 else
