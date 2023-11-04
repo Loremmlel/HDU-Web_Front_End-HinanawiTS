@@ -1,0 +1,21 @@
+.hidden-link
+{
+    text-decoration: none;
+    color: inherit;
+}
+.smaller
+{
+    font-size: smaller;
+}
+.small
+{
+    font-size: small;
+}
+.non-underline
+{
+    text-decoration: none;
+}
+.inline-tail
+{
+    float: right;
+}

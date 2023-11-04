@@ -1,0 +1,64 @@
+.navigator
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+}
+.menu-top-img
+{
+    display: flex;
+    width: 100%;
+    height: 15px;
+    background-image: url(/img/menuright01.gif);
+}
+.menu-body
+{
+    display: flex;
+    width: 100%;
+}
+.menu-left-img
+{
+    display: flex;
+    flex: 0 0 17px;
+    background-image: url(/img/menuright04.gif);
+    background-repeat: repeat-y;
+    margin-top: -5px;
+}
+.menu-main
+{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.menu-profile
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+hr
+{
+    width: 100%;
+}
+.menu-tag,.tag,.menu-time,.time
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu-right-img
+{
+    display: flex;
+    flex: 0 0 20px;
+    background-image: url(/img/menuright02.gif);
+    background-repeat: repeat-y;
+    margin-top: -5px;
+}
+.menu-bottom-img
+{
+    display: flex;
+    height: 17px;
+    width: 100%;
+    background-image: url(/img/menuright03.gif);
+}

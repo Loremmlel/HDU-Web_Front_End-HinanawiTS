@@ -1,0 +1,42 @@
+.body
+{
+    background-image: url(../img/简约背景.jpg);
+}
+.main
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 3%;
+}
+.head-left
+{
+    display:flex;
+    height: 200px;
+    width: 20%;
+}
+.head-right
+{
+    display:flex;
+    height: 200px;
+    width: 60%;
+}
+.head-right>.title
+{
+    text-align: right;
+    width: 100%;
+}
+.content-left
+{
+    display:flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 20%;
+}
+.content-right
+{
+    display: flex;
+    width: 13%;
+    margin-top: 10%;
+}
