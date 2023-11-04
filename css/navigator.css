@@ -10,7 +10,7 @@
     display: flex;
     width: 100%;
     height: 15px;
-    background-image: url(/img/menuright01.gif);
+    background-image: url(../img/menuright01.gif);
 }
 .menu-body
 {
@@ -21,7 +21,7 @@
 {
     display: flex;
     flex: 0 0 17px;
-    background-image: url(/img/menuright04.gif);
+    background-image: url(../img/menuright04.gif);
     background-repeat: repeat-y;
     margin-top: -5px;
 }
@@ -51,7 +51,7 @@ hr
 {
     display: flex;
     flex: 0 0 20px;
-    background-image: url(/img/menuright02.gif);
+    background-image: url(../img/menuright02.gif);
     background-repeat: repeat-y;
     margin-top: -5px;
 }
@@ -60,5 +60,5 @@ hr
     display: flex;
     height: 17px;
     width: 100%;
-    background-image: url(/img/menuright03.gif);
+    background-image: url(../img/menuright03.gif);
 }
