@@ -1,5 +1,6 @@
 .body
 {
+    margin-top: 0px;
     background-image: url(../img/简约背景.jpg);
 }
 .main
@@ -39,4 +40,44 @@
     display: flex;
     width: 13%;
     margin-top: 10%;
+}
+.top-navigator
+{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height:50px;
+    width: 100%;
+}
+.navbar
+{
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    background-color:rgb(241, 252, 255);
+    justify-content: space-between;
+}
+.hyperlink
+{
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    padding: 0%;
+    margin: 0%;
+}
+.button
+{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.information
+{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
 }

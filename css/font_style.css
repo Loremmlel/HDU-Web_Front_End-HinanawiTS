@@ -15,7 +15,7 @@
 {
     text-decoration: none;
 }
-.inline-tail
+.fade-text
 {
-    float: right;
+    opacity: 0.5;
 }
