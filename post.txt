@@ -9,7 +9,6 @@
                     </div>
                     <div class="post-text">
                         正文
-                        图片（图片在最右边。限一张）
                     </div>
                     <div class="post-dot"></div>
                     <div class="post-foot">
