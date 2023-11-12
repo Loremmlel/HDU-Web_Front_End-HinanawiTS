@@ -48,6 +48,7 @@ const css_mode= //夜间模式样式
     ";
 var current_path_index = 0; //svg图像索引
 var current_style_index = 0; //白天、夜间模式索引
+var url = window.location.hostname;
 document.addEventListener("DOMContentLoaded", function () { // 页面加载完毕
     read_svg_from_cookie();
     read_css_from_cookie();
@@ -72,11 +73,11 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             var cssState = { //把css状态保存到cookie中
                 currentStyleIndex: current_style_index
             }
-            if(window.location.hostname == "www.hinanawits.com"){
+            if(url == "www.hinanawits.com"){
                 document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=.hinanawits.com;path=/";
                 document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=.hinanawits.com;path=/";
             }
-            else if(window.location.hostname == "loremmlel.github.io"){
+            else if(url == "loremmlel.github.io"){
                 document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=loremmlel.github.io;path=/";
                 document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=loremmlel.github.io;path=/";
             }
@@ -91,8 +92,13 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
     }
     if(button_mainpage){
         button_mainpage.addEventListener("click", function () {
-            window.open("/html/main","_self");
-        });
+            if(url == "www.hinanawits.com"){
+                window.open("http://www.hinanawits.com/html/main","_self");
+            }
+            else if(url == "loremmlel.github.io"){
+                window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/main","_self");
+            }
+        })
     }else{
         console.error("button-mainpage not found");
     }

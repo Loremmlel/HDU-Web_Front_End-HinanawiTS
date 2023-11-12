@@ -1,7 +1,7 @@
 .body
 {
     margin-top: 0px;
-    background-image: url(/img/简约背景.jpg);
+    background-image: url(../img/简约背景.jpg);
     transition: background-color 0.5s;
 }
 .main
