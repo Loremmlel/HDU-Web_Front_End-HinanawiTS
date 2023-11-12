@@ -49,7 +49,6 @@ const css_mode= //夜间模式样式
 var current_path_index = 0; //svg图像索引
 var current_style_index = 0; //白天、夜间模式索引
 document.addEventListener("DOMContentLoaded", function () { // 页面加载完毕
-    console.log(window.location.hostname);
     read_svg_from_cookie();
     read_css_from_cookie();
     var button_style_switch = document.getElementById("button-style-switch");
@@ -73,8 +72,14 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             var cssState = { //把css状态保存到cookie中
                 currentStyleIndex: current_style_index
             }
-            document.cookie = "svgState=" + JSON.stringify(svgState);
-            document.cookie = "cssState=" + JSON.stringify(cssState);
+            if(window.location.hostname == "www.hinanawits.com"){
+                document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=.hinanawits.com;path=/";
+                document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=.hinanawits.com;path=/";
+            }
+            else if(window.location.hostname == "loremmlel.github.io"){
+                document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=loremmlel.github.io;path=/";
+                document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=loremmlel.github.io;path=/";
+            }
         });
     }
     if(button_github){
