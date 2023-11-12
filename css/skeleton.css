@@ -1,7 +1,8 @@
 .body
 {
     margin-top: 0px;
-    background-image: url(../img/简约背景.jpg);
+    background-image: url(/img/简约背景.jpg);
+    transition: background-color 0.5s;
 }
 .main
 {
@@ -58,6 +59,7 @@
     position: fixed;
     background-color:white;
     justify-content: space-between;
+    overflow:visible;
 }
 .hyperlink
 {
@@ -73,6 +75,12 @@
     width: 20%;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.2s,color 0.2s;
+}
+.button:hover
+{
+    background-color: rgb(193, 255, 255);
+    color:rgb(255, 246, 253);
 }
 .information
 {

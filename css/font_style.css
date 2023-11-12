@@ -19,8 +19,13 @@
 {
     opacity: 0.5;
 }
-.icon {
+.icon 
+{
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
+ }
+ .cursor-default
+ {
+    cursor: default !important;
  }
