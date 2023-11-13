@@ -29,21 +29,25 @@ const style_switch_paths = [ //保存太阳和猫头鹰两种svg样式
         }
 ]
 const css_mode= //夜间模式样式
-    ".navbar{\
+    ".top-navigator{\
         background-color:dimgray;\
-        color:white\
+        color:white;\
+        border-bottom:2px solid dimgray;\
     }\
     .list{\
         background-color:dimgray;\
-        color:white\
+        color:white;\
+        border: 2px solid dimgray;\
     }\
-    .navigator{\
+    .menu-profile,.menu-tag,.menu-time{\
         background-color:dimgray;\
-        color:white\
+        color:white;\
+        border: 2px solid dimgray;\
     }\
     .post{\
         background-color:dimgray;\
-        color:white\
+        color:white;\
+        border: 2px solid dimgray;\
     }\
     ";
 var current_path_index = 0; //svg图像索引
