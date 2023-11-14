@@ -1,24 +1,19 @@
-标准首页文章格式。
-        <div class="post">
-            <div class="post-top-img"></div>
-            <div class="post-body">
-                <div class="post-left-img"></div>
-                <div class="post-article">
-                    <div class="post-title">
-                        <a class="hidden-link" href="detail/1">标题</a>
-                    </div>
-                    <div class="post-text">
-                        正文
-                    </div>
-                    <div class="post-dot"></div>
-                    <div class="post-foot">
-                        <span class="smaller"><a class="non-underline" href="list/tag/tag_对应名称">标签&nbsp;</a></span>
-                        <span class="smaller"><a class="non-underline" href="detail/文章编号">#&nbsp;</a></span>
-                        <span class="smaller">by 作者&nbsp;<a class="non-underline" href="list/year/年份">年份</a>-月份-日期 时:分:秒</span>
+            <div class="post">
+                <div class="post-body">
+                    <div class="post-article">
+                        <div class="post-title">
+                            <a class="hidden-link" href="detail/文章id">标题</a>
+                        </div>
+                        <div class="post-text">
+                            文章内容
+                        </div>
+                        <div class="post-dot"></div>
+                        <div class="post-foot">
+                            <span class="smaller fade-text"><a class="non-underline" href="list/tag/文章tag英文">文章tag中文&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="detail/文章id">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by 作者&nbsp;<a class="non-underline" href="list/year/年份">年份</a>-月份-日 时:分:秒</span>
+                        </div>
                     </div>
                 </div>
-                <div class="post-right-img"></div>
             </div>
-            <div class="post-bottom-img"></div>
-        </div>
-        <div class="post-blank"></div>
+            <div class="post-blank"></div>

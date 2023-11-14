@@ -34,7 +34,7 @@ const css_mode= //夜间模式样式
         color:white;\
         border-bottom:2px solid dimgray;\
     }\
-    .list{\
+    .list,.one-comment{\
         background-color:dimgray;\
         color:white;\
         border: 2px solid dimgray;\
@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             //替换svg图像
             current_path_index = (current_path_index + 1) % style_switch_paths.length;
             current_style_index = (current_style_index + 1) % 2;
-            console.log(current_style_index);
             var svg = button_style_switch.getElementsByTagName("svg")[0]; //第一个svg元素
             switch_svg(style_switch_paths,current_path_index,svg);
             //替换css样式
@@ -120,11 +119,7 @@ function switch_svg(svg_path,svg_index,svg_element){ //切换svg图像
 }
 
 function switch_css(css_index){
-    console.log("switch_css");
-    console.log(css_index);
-    console.log(typeof(css_index));
     if(css_index==0){
-        console.log("remove");
         var style = document.head.querySelector("style");
         if(style){
             style.remove();
@@ -132,7 +127,6 @@ function switch_css(css_index){
         return;
     }
     else{
-        console.log("change");
         var style_element = document.createElement("style");
         style_element.appendChild(document.createTextNode(css_mode))
         document.head.appendChild(style_element);
@@ -155,7 +149,6 @@ function read_svg_from_cookie(){ //让刷新后不改变原有svg图像
 
 function read_css_from_cookie(){
     var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)cssState\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    console.log(cookieValue);
     if(cookieValue){
         var cssState = JSON.parse(cookieValue);
         current_style_index = cssState.currentStyleIndex;

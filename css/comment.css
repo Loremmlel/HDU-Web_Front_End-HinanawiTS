@@ -21,9 +21,9 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 10px;
     background-color: white;
-    border: 3px dashed rgb(172, 203, 230) ;
+    padding: 2%;
 }
 .comment-intel
 {
@@ -33,4 +33,8 @@
 {
     width: 100%;
     word-break: break-all;
+}
+textarea
+{
+    width: 100%;
 }
