@@ -3,6 +3,18 @@ var post_id = 0;
 document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，添加8个缩减过的post
     upload_from_json("../json/articles/articles.json",8);
 })
+//判断整个文档滚动至底部
+window.onscroll = ()=>{
+    // 窗口高度
+    var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      // 页面高度
+    var documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      // 滚动条位置
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if ((windowHeight + scrollTop + 2) >= documentHeight) {
+        upload_from_json("../json/articles/articles.json",8);
+    }
+  }
 function upload_from_json(path,num){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){

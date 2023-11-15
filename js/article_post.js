@@ -51,12 +51,13 @@ function post_article(article){ //将文章信息写入页面
                             <div>
                                 ${article.content.replace(/\n/g,"<br>")} 
                             </div>
+                            <img class="image" src=${article.img_url}>
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
                             <span class="smaller fade-text"><a class="non-underline" href="../list/tag/tag_${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="${article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/year/${article.year}">${article.year}"</a>-${article.time}</span>
+                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/year/${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +65,11 @@ function post_article(article){ //将文章信息写入页面
         var blank = document.createElement("div");//文章下方的空白
         blank.className = "post-blank"; 
         content_left.appendChild(new_post);
-        content_left.appendChild(blank); 
+        content_left.appendChild(blank);
+        var head = document.getElementsByTagName("head")[0]; 
+        var title = document.createElement("title");
+        title.innerHTML = article.title;
+        head.appendChild(title);
 }
 
 function select(comments,id){ //挑选符合文章id的评论
@@ -85,7 +90,7 @@ function post_comments(comments){
         new_comment.className = "one-comment";
         new_comment.innerHTML = `
         <div class="comment-intel">
-            <span class="small fade-text">匿名用户(${comments[i].time})</span>
+            <span class="small fade-text">${comments[i].user_name}(${comments[i].time})</span>
         </div>
         <div class="comment-content">
             <span class="smaller">${comment_content}</span>
