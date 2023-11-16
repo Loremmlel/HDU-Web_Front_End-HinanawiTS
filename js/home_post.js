@@ -1,6 +1,7 @@
 //实现主页的文章截取，以及拉到底部自动补充的功能。还有跳转到其他页面调用php的功能。
 var post_id = 0;
 document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，添加8个缩减过的post
+    console.log(window.location.hostname);
     upload_from_json("../json/articles/articles.json",8);
 })
 //判断整个文档滚动至底部

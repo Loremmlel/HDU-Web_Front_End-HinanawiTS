@@ -42,14 +42,14 @@ if($anonymity_flag == 1){
 $content = $comment['content'];
 $time = date('Y-m-d H:i:s');
 $new_comment = array(
-    'id' => $id,
+    'id' => strval($id),
     'article_id' => $article_id,
     'user_name' => $user_name,
     'content' => $content,
     'time' => $time
 );
 $data['comments'][] = $new_comment;
-$new_json = json_encode($data,JSON_PRETTY_PRINT);
+$new_json = json_encode($data,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
 file_put_contents('../json/comments/comments.json',$new_json);
 header('Location:'.$url);
 ?>
