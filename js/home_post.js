@@ -31,7 +31,7 @@ function upload_from_json(path,num){
 function split_articles(articles,num){
     var splited_articles = [];
     var count = 0;
-    for(var i=articles.articles.length-1;i>=0 && i>=(articles.articles.length)-num;i--){//最新的文章在最上面，所以从后往前遍历
+    for(var i=articles.articles.length-1;i-post_id>=0 && i>=(articles.articles.length)-num;i--){//最新的文章在最上面，所以从后往前遍历
         splited_articles.push(articles.articles[i-post_id]);
         count++;
     }
