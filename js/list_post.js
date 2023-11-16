@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var pathname = window.location.pathname;
-    var property = pathname.match(/\/html\/list\/(tag|year)\/(\w+)/);//property[1]表示是tag还是year，[2]表示具体的
-    console.log(property);
-    upload_list_from_json("../../../json/articles/articles.json",property);
+    var search = window.location.search;
+    var matched = search.match(/\?property=(.*)&name=(.*)/);//matched[1]表示是tag还是year，[2]表示具体的
+    console.log(matched);
+    upload_list_from_json("../../json/articles/articles.json",matched);
 });
 function upload_list_from_json(path,property){
     var xhr = new XMLHttpRequest();
@@ -21,7 +21,7 @@ function match_property(articles,property){
     var matched_articles = [];
     if(property[1]=="tag"){
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
-            if("tag_" + articles[i].tag_eng == property[2]){
+            if(articles[i].tag_eng == property[2]){
                 matched_articles.push(articles[i]);
             }
         }

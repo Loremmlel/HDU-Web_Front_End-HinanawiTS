@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded",function(){ //负责加载文章和评论
-    var pathname = window.location.pathname;
-    var article_id = pathname.match(/\/(\d+)$/)[1]; //截取文章id
+    var search = window.location.search;
+    var article_id = search.match(/\?post_id=(\d+)/)[1]; //截取文章id
     upload_from_json("../../json/articles/articles.json","../../json/comments/comments.json",article_id);
 })
 
@@ -45,7 +45,7 @@ function post_article(article){ //将文章信息写入页面
                 <div class="post-body">
                     <div class="post-article">
                         <div class="post-title">
-                            <a class="hidden-link" href="${article.id}">${article.title}</a>
+                            <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
                         </div>
                         <div class="post-text">
                             <div>
@@ -55,9 +55,9 @@ function post_article(article){ //将文章信息写入页面
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="../list/tag/tag_${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
-                            <span class="smaller fade-text"><a class="non-underline" href="${article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/year/${article.year}">${article.year}</a>-${article.time}</span>
+                            <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
                     </div>
                 </div>

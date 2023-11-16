@@ -1,4 +1,4 @@
-//实现主页的文章截取，以及拉到底部自动补充的功能
+//实现主页的文章截取，以及拉到底部自动补充的功能。还有跳转到其他页面调用php的功能。
 var post_id = 0;
 document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，添加8个缩减过的post
     upload_from_json("../json/articles/articles.json",8);
@@ -47,19 +47,19 @@ function post_cutted(articles){
                 <div class="post-body">
                     <div class="post-article">
                         <div class="post-title">
-                            <a class="hidden-link" href="detail/${articles[i].id}">${articles[i].title}</a>
+                            <a class="hidden-link" href="detail/module?post_id=${articles[i].id}">${articles[i].title}</a>
                         </div>
                         <div class="post-text">
                             <div>
                                 ${articles[i].content.substr(0,100).replace(/\n/g,"")} 
-                                <a class="non-underline" href="detail/${articles[i].id}">...阅读全文</a>
+                                <a class="non-underline" href="detail/module?post_id=${articles[i].id}">...阅读全文</a>
                             </div>
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="list/tag/tag_${articles[i].tag_eng}">${articles[i].tag_chs}&nbsp;</a></span>
-                            <span class="smaller fade-text"><a class="non-underline" href="detail/${articles[i].id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/year/${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
+                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${articles[i].tag_eng}">${articles[i].tag_chs}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${articles[i].id}">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/list?property=year/name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
                         </div>
                     </div>
                 </div>
