@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通知</title>
+</head>
+<body>
+    <script>
+        if(document.referrer == 'https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/main'){
+            document.getElementsByTagName('body')[0].innerHTML = '<h1>你现在正在访问github pages的页面。此页面不支持后端，因此无法使用评论功能。</h1>'
+            setTimeout(function(){window.location.href = document.referrer},3000);
+        }
+    </script>
+</body>
+</html>
