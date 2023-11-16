@@ -159,8 +159,11 @@
         </div>
         <div class="comment">
             <div class="comment-box">
-                <form name="comment" action="../../php/comment_1.php" method="post" enctype="application/x-www-form-urlencoded">
-                    <textarea rows="4" cols="100"></textarea>
+                <form name="comment" action="../../php/add_comments.php" method="post" enctype="application/x-www-form-urlencoded">
+                    <input type="checkbox" name="anonymity" value="1">匿名
+                    <input type="text" name="user_name" placeholder="用户名">
+                    <div style="height:5%"></div>
+                    <textarea rows="4" cols="100" name="content" placeholder="评论"></textarea>
                     <div style="height: 20px;"></div>
                     <input type="submit" value="发表评论" style="float: right;">
                 </form>
@@ -170,5 +173,20 @@
             </div>
         </div>
     </div>
+    <script>
+        var anonymity_checkbox = document.getElementsByName("anonymity")[0];
+        var user_name_input = document.getElementsByName("user_name")[0];
+        anonymity_checkbox.addEventListener("change",function(){
+            if(anonymity_checkbox.checked){
+                user_name_input.disabled = true;
+                user_name_input.value = "匿名用户";
+                console.log("匿名");
+            }else{
+                user_name_input.disabled = false;
+                user_name_input.value = "";
+                console.log("不匿名");
+            }
+        })
+    </script>
 </body>
 </html>
