@@ -100,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             }
             else if(url == "loremmlel.github.io"){
                 window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/main","_self");
+            }else{
+                windows.open("");
             }
         })
     }else{

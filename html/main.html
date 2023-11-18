@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/border.css">
     <script src="../js/top_navbar.js"></script>
     <script src="../js/home_post.js"></script>
+    <script src="../js/toolbar.js"></script>
     <title>主页</title>
 </head>
 <body class="body">
@@ -160,11 +161,29 @@
             </div>
         </div>
     </div>
+    <div class="custom-toolbar extend">
+        <div class="toolbar-item" style="transform: translateY(-50px);">
+            <i>🚀</i>
+            <div class="tooltip">回顶
+            </div>
+        </div>
+        <div class="toolbar-item toolbar-item-toggle" style="display: none;">
+            <i>➕</i>
+            <div class="tooltip tooltip-toggle">展开
+            </div>
+        </div>
+        <div class="toolbar-item toolbar-item-toggle active" style="display: block;">
+            <i>➖</i>
+            <div class="tooltip tooltip-toggle">收起
+            </div>
+        </div>
+    </div>
     <script>
+        //如果用户访问的是github pages服务搭建的网站，给出无法使用后端的提示。
         var url = window.location.hostname;
         var referrer = document.referrer;
         if(url == 'loremmlel.github.io' && referrer === 'https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/'){
-            window.open('notification','_self');
+            window.open('notification','_self'); 
         }
     </script>
 </body>

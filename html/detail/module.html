@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../css/border.css">
     <script src="../../js/top_navbar.js"></script>
     <script src="../../js/article_post.js"></script>
+    <script src="../../js/toolbar.js"></script>
 </head>
 <body class="body">
     <div class="top-navigator">
@@ -168,8 +169,26 @@
                     <input type="submit" value="发表评论" style="float: right;">
                 </form>
             </div>
+            <span class="small">评论后强制刷新(ctrl+f5)生效</span>
             <div style="width: 100%;height: 150px;"></div>
             <div class="comment-list">
+            </div>
+        </div>
+    </div>
+    <div class="custom-toolbar extend">
+        <div class="toolbar-item" style="transform: translateY(-50px);">
+            <i>🚀</i>
+            <div class="tooltip">回顶
+            </div>
+        </div>
+        <div class="toolbar-item toolbar-item-toggle" style="display: none;">
+            <i>➕</i>
+            <div class="tooltip tooltip-toggle">展开
+            </div>
+        </div>
+        <div class="toolbar-item toolbar-item-toggle active" style="display: block;">
+            <i>➖</i>
+            <div class="tooltip tooltip-toggle">收起
             </div>
         </div>
     </div>

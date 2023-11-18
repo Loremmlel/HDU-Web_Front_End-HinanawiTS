@@ -91,3 +91,108 @@
     justify-content: center;
     align-items: center;
 }
+.custom-toolbar 
+{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+}
+.toolbar-item 
+{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    box-shadow: 0 2px 12px #0000001a;
+    cursor: pointer;
+    transition: background-color 0.2s
+}
+.toolbar-item i 
+{
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    outline: none;
+}
+.toolbar-item .tooltip 
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 12px;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(-31px);
+    z-index: 9;
+}
+.toolbar-item .tooltip:after 
+{
+    position: absolute;
+    right: -5px;
+    content: "";
+    width: 0;
+    height: 0;
+    margin: 0;
+    border-bottom: 6px solid transparent;
+    border-top: 6px solid transparent;
+    border-left: 6px solid #333;
+}
+.toolbar-item.toolbar-item-toggle 
+{
+    position: absolute;
+    bottom: 0;
+}
+.toolbar-item .tooltip 
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 12px;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(-31px);
+    z-index: 9;
+}
+.toolbar-item:hover
+{
+    background-color: rgb(193, 255, 255);
+}
+.tooltip 
+{
+    visibility: hidden;
+    width: 60px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    margin-top: -5px;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.toolbar-item:hover .tooltip
+{
+    visibility: visible;
+    opacity: 1;
+}
