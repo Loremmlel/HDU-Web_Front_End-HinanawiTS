@@ -49,6 +49,9 @@ const css_mode= //夜间模式样式
         color:white;\
         border: 2px solid dimgray;\
     }\
+    .body{\
+        background-color:gray;\
+    }\
     ";
 var current_path_index = 0; //svg图像索引
 var current_style_index = 0; //白天、夜间模式索引
