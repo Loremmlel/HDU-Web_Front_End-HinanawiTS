@@ -40,7 +40,7 @@ function post_list(articles){
         var list_raw = document.createElement("div");
         list_raw.className = "list-raw";
         list_raw.innerHTML =`
-        <span class="smaller"><a class="non-underline" href="../detail/module?post_id=${articles[i].id}">${articles[i].title}</a></span><br>
+        <span class="smaller bold-text moveable-text"><a class="non-underline" href="../detail/module?post_id=${articles[i].id}">${articles[i].title}</a></span><br>
         <span class="smaller fade-text">by ${articles[i].author} ${articles[i].year}-${articles[i].time}</span>
         `
         list_main.appendChild(list_raw);

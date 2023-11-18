@@ -32,3 +32,16 @@
     width: 100%;
     margin: 0;
  }
+.moveable-text
+{
+    display: inline-block !important;
+    transition: transform 0.3s ease !important;
+}
+.moveable-text:hover
+{
+    transform: translateX(15px) !important;
+}
+.bold-text
+{
+    font-weight: bold;
+}

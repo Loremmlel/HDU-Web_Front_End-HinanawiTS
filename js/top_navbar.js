@@ -56,6 +56,7 @@ var url = window.location.hostname;
 document.addEventListener("DOMContentLoaded", function () { // 页面加载完毕
     read_svg_from_cookie();
     read_css_from_cookie();
+    var referrer = document.referrer;
     var button_style_switch = document.getElementById("button-style-switch");
     var button_github = document.getElementById("button-github");
     var button_mainpage = document.getElementById("button-mainpage");
@@ -106,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
         })
     }else{
         console.error("button-mainpage not found");
+    }
+    if(referrer == "http://www.hinanawits.com/"){ //第一次打开主页时的referrer是这个地址。可以用于统计浏览量。
+        var statistical_request = new XMLHttpRequest();
+        statistical_request.open("GET","../php/statistic.php",true);
+        if(statistical_request.status == 200){
+            console.log("statistical_request success");
+        }
+        statistical_request.send();
     }
 });
 function switch_svg(svg_path,svg_index,svg_element){ //切换svg图像

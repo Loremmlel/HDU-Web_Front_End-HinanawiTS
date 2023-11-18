@@ -9,8 +9,8 @@ foreach($comment as $key => $value){ //检查是否勾选了匿名选项，是�
         $anonymity_flag = 1;
         $username_flag = 1;
     }
-    if($key == 'username'){
-        if(trim($value)!=='' && $anonymity_flag == 0){
+    if($key == 'user_name'){
+        if(trim($value)!==''){
             $username_flag = 1;
         }
     }
