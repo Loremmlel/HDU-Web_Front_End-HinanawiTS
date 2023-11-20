@@ -19,6 +19,7 @@
 {
     display: flex;
     width: 100%;
+    flex-direction: column;
 }
 /*.post-left-img
 {
@@ -40,6 +41,7 @@
     width: 100%;
     justify-content: center;
     font-weight:bold;
+    align-items: center;
 }
 .post-text
 {
@@ -92,3 +94,64 @@
 {
     width: 70%;
 }
+audio
+{
+    width: 70%;
+    height: 20px;
+}
+.button-check
+{
+    opacity: 0;
+    z-index: -1;
+    float:right
+}
+.check-box
+{
+    display: flex;
+    align-items: center;
+    width:60px;
+    height:20px;
+    background:rgb(236, 251, 251);
+    border-radius: 25px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.check-handler 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgb(236, 251, 251);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+.check-handler:before 
+{
+    content:"中";
+    color: black;
+    font-weight: 900;
+}
+.button-check:checked+.check-box 
+{
+    background: rgb(193, 255, 255);
+}
+.button-check:checked+.check-box .check-handler 
+{
+    margin-left: 66%;
+    background: rgb(193, 255, 255);
+}
+.button-check:checked+.check-box .check-handler:before 
+{
+    content: "日";
+    color:black;
+}
+.post-audio
+{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+};

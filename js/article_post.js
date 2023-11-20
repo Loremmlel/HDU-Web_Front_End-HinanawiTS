@@ -1,3 +1,4 @@
+var audio_lang_flag = 0; //0是中文，1是日语
 document.addEventListener("DOMContentLoaded",function(){ //负责加载文章和评论
     var search = window.location.search;
     var article_id = search.match(/\?post_id=(\d+)/)[1]; //截取文章id
@@ -11,6 +12,11 @@ function upload_from_json(article_path,comment_path,id){
             var articles = JSON.parse(article_xhr.responseText);  //articles是一个对象，内有一个也叫articles的数组
             var article = match(articles.articles,id); //匹配id相符合的记录
             post_article(article);
+            var button = document.querySelector('.button-check');
+            button.addEventListener("click",function(){
+                audio_lang_flag = 1 - audio_lang_flag;
+                change_lang(audio_lang_flag,id);
+            })
         }
     }
     article_xhr.open("GET",article_path,true);
@@ -53,12 +59,26 @@ function post_article(article){ //将文章信息写入页面
                             </div>
                             <img class="image" src=${article.img_url}>
                         </div>
+                        <div class="post-audio">
+                            <img src="../../img/Kita_Ikuyo.gif" style="width:7%;height:7%;">
+                            <audio src="../../audio/${article.id}_chs.mp3" controls></audio>
+                            <input class="button-check" type="checkbox" name="" id="custom">
+                            <label class="check-box" for="custom">
+                                <span class="check-handler"></span>
+                            </label>
+                        </div>
+                        <div class="post-dot"></div>
+                        </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
                             <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
                             <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
+                    </div>
+                    <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
+                            <a class="non-underline" href="module?post_id=${article.id-1}">上一篇<<< </a>
+                            <a class="non-underline" href="module?post_id=${parseInt(article.id)+1}"> >>>下一篇 </a>
                     </div>
                 </div>
         `;
@@ -97,5 +117,14 @@ function post_comments(comments){
         </div>
         `
         comment_list.appendChild(new_comment);
+    }
+}
+
+function change_lang(flag,id){
+    var audio = document.querySelector("audio");
+    if(flag == 0){
+        audio.src = `../../audio/${id}_chs.mp3`;
+    }else if(flag == 1){
+        audio.src = `../../audio/${id}_jap.mp3`;
     }
 }

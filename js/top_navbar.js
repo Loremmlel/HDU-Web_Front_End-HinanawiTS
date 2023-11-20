@@ -52,6 +52,21 @@ const css_mode= //夜间模式样式
     .body{\
         background-color:gray;\
     }\
+    .check-handler:before{\
+        color:white;\
+    }\
+    .button-check:checked+.check-box .check-handler:before{\
+        color:white;\
+    }\
+    .check-box,.check-handler{\
+        background-color:gainsboro;\
+    }\
+    .button-check:checked+.check-box{\
+        background-color:gray;\
+    }\
+    .button-check:checked+.check-box .check-handler{\
+        background-color:gray;\
+    }\
     ";
 var current_path_index = 0; //svg图像索引
 var current_style_index = 0; //白天、夜间模式索引
