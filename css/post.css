@@ -5,6 +5,7 @@
     width: 100%;
     background-color: white;
     padding: 2%;
+    transition: background-color 0.5s ease,color 0.5s ease, border-color 0.5s ease;
 }
 /*.post-top-img
 {
@@ -99,6 +100,10 @@ audio
     width: 70%;
     height: 20px;
 }
+audio::-webkit-media-controls-panel,audio::-webkit-media-controls-time-display
+{
+    transition: all 0.5s ease;
+}
 .button-check
 {
     opacity: 0;
@@ -145,7 +150,7 @@ audio
 }
 .button-check:checked+.check-box .check-handler:before 
 {
-    content: "日";
+    content: "母";
     color:black;
 }
 .post-audio

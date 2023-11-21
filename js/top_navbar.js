@@ -31,32 +31,32 @@ const style_switch_paths = [ //保存太阳和猫头鹰两种svg样式
 const css_mode= //夜间模式样式
     ".top-navigator{\
         background-color:dimgray;\
-        color:white;\
+        color:whitesmoke;\
         border-bottom:2px solid dimgray;\
     }\
     .list,.one-comment{\
         background-color:dimgray;\
-        color:white;\
+        color:whitesmoke;\
         border: 2px solid dimgray;\
     }\
     .menu-profile,.menu-tag,.menu-time{\
         background-color:dimgray;\
-        color:white;\
+        color:whitesmoke;\
         border: 2px solid dimgray;\
     }\
     .post{\
         background-color:dimgray;\
-        color:white;\
+        color:whitesmoke;\
         border: 2px solid dimgray;\
     }\
     .body{\
         background-color:gray;\
     }\
     .check-handler:before{\
-        color:white;\
+        color:whitesmoke;\
     }\
     .button-check:checked+.check-box .check-handler:before{\
-        color:white;\
+        color:whitesmoke;\
     }\
     .check-box,.check-handler{\
         background-color:gainsboro;\
@@ -66,6 +66,17 @@ const css_mode= //夜间模式样式
     }\
     .button-check:checked+.check-box .check-handler{\
         background-color:gray;\
+    }\
+    .toolbar-item{\
+        background-color:gray;\
+    }\
+    audio::-webkit-media-controls-panel,audio::-webkit-media-controls-time-display{\
+        background-color:gray;\
+        color:whitesmoke;\
+    }\
+    .audio-selector{\
+        background-color:gray;\
+        color:whitesmoke;\
     }\
     ";
 var current_path_index = 0; //svg图像索引
