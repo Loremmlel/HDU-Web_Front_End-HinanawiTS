@@ -44,7 +44,7 @@ const css_mode= //夜间模式样式
         color:whitesmoke;\
         border: 2px solid dimgray;\
     }\
-    .post{\
+    .post,.notice{\
         background-color:dimgray;\
         color:whitesmoke;\
         border: 2px solid dimgray;\
