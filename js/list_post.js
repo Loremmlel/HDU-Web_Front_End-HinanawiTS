@@ -2,6 +2,27 @@ document.addEventListener('DOMContentLoaded', function() {
     var search = window.location.search;
     var matched = search.match(/\?property=(.*)&name=(.*)/);//matched[1]表示是tag还是year，[2]表示具体的
     console.log(matched);
+    var head = document.querySelector("head");
+    var title = document.createElement("title");
+    if(matched[1]=="tag"){
+        title.innerHTML += "标签";
+        switch(matched[2]){
+            case "starsector":
+                title.innerHTML += "-远行星号";
+                break;
+            case "lovemaster":
+                title.innerHTML += "-年彬文章";
+                break;
+            case "image_video":
+                title.innerHTML += "-图图";
+                break;
+            case "casualessay":
+                title.innerHTML += "-随笔";
+        }
+    }else if(matched[1]=="year"){
+        title.innerHTML += "时间" + "-" + matched[2];
+    }
+    head.appendChild(title);
     upload_list_from_json("../../json/articles/articles.json",matched);
 });
 function upload_list_from_json(path,property){
