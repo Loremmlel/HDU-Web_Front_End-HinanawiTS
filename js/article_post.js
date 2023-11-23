@@ -1,5 +1,6 @@
 var audio_lang_flag = 0; //0是中文，1是母语
 var character = 'kita';
+var global_articles = []; //只是用来指示上一篇、下一篇ID的全局变量……
 document.addEventListener("DOMContentLoaded",function(){ //负责加载文章和评论
     var search = window.location.search;
     var article_id = search.match(/\?post_id=(\d+)/)[1]; //截取文章id
@@ -11,6 +12,7 @@ function upload_from_json(article_path,comment_path,id){
     article_xhr.onreadystatechange = function(){
         if(article_xhr.readyState == 4 && article_xhr.status == 200){
             var articles = JSON.parse(article_xhr.responseText);  //articles是一个对象，内有一个也叫articles的数组
+            global_articles = articles.articles;
             var article = match(articles.articles,id); //匹配id相符合的记录
             post_article(article);
             if(article.tag_eng == 'lovemaster'){
@@ -53,7 +55,9 @@ function match(articles,id){ //匹配id相符的文章
 function post_article(article){ //将文章信息写入页面
     var content_left = document.getElementsByClassName("content-left")[0];
     var new_post = document.createElement("div");
+    var nearby_id = get_nearby_id(article.id);
     new_post.className = "post";
+    new_post.style.cssText = "transform-style:unset;transform:none;animation:none;" //详情页就不用动画了
     new_post.innerHTML = `
                 <div class="post-body">
                     <div class="post-article">
@@ -76,8 +80,8 @@ function post_article(article){ //将文章信息写入页面
                         </div>
                     </div>
                     <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
-                            <a class="non-underline" href="module?post_id=${article.id-1}">上一篇<<< </a>
-                            <a class="non-underline" href="module?post_id=${parseInt(article.id)+1}"> >>>下一篇 </a>
+                            <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
+                            <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
                     </div>
                 </div>
         `;
@@ -121,8 +125,8 @@ function post_article(article){ //将文章信息写入页面
                     </div>
                 </div>
                 <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
-                        <a class="non-underline" href="module?post_id=${article.id-1}">上一篇<<< </a>
-                        <a class="non-underline" href="module?post_id=${parseInt(article.id)+1}"> >>>下一篇 </a>
+                        <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
+                        <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
                 </div>
             </div>
             `;
@@ -187,5 +191,21 @@ function change_lang(flag,id,character){ //改变语音的人物、语言
     }else if(character =='mikado'){
         portrait.src = '../../img/mikado.png';
         portrait.title = '不提供简体中文。因为就我搜集到的模型，简体中文的音色和天皇的相似度不如日语';
+    }
+}
+
+function get_nearby_id(id){ //获取上一篇、下一篇文章的id。返回一个有两个元素的数组
+    var i = 0;
+    for(;i<global_articles.length;i++){
+        if(global_articles[i].id == id){
+            break;
+        }
+    }
+    if(i == global_articles.length - 1){
+        return [global_articles[i-1].id,global_articles[0].id];
+    }else if(i == 0){
+        return [global_articles[global_articles.length-1].id,global_articles[1].id];
+    }else{
+        return [global_articles[i-1].id,global_articles[i+1].id];
     }
 }
