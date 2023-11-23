@@ -26,6 +26,11 @@ function upload_from_json(article_path,comment_path,id){
                     character = this.value;
                     change_lang(audio_lang_flag,id,character);
                 })
+                var text_lang = document.querySelector('.text-language');
+                text_lang.addEventListener("change",function(){
+                    language = this.value;
+                    change_text_lang(language,article);
+                })
             }
         }
     }
@@ -93,6 +98,11 @@ function post_article(article){ //将文章信息写入页面
                 <div class="post-article">
                     <div class="post-title">
                         <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
+                        <select class="text-language" title="文章语言" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
+                            <option value="chs">简体中文</option>
+                            <option value="eng">英文</option>
+                            <option value="jap">日文</option>
+                        </select>
                     </div>
                     <div class="post-text">
                         <div>
@@ -167,7 +177,7 @@ function post_comments(comments){
     }
 }
 
-function change_lang(flag,id,character){ //改变语音的人物、语言
+function change_lang(flag,id,character){ //改变语音的人物、语言。
     var audio = document.querySelector("audio");
     var portrait = document.querySelector('.portrait');
     if(flag == 0){
@@ -207,5 +217,15 @@ function get_nearby_id(id){ //获取上一篇、下一篇文章的id。返回一
         return [global_articles[global_articles.length-1].id,global_articles[1].id];
     }else{
         return [global_articles[i-1].id,global_articles[i+1].id];
+    }
+}
+function change_text_lang(language,article){ //改变文章语言。
+    var content = document.querySelector(".post-text div");
+    if(language == "chs"){
+        content.innerHTML = article.content.replace(/\n/g,"<br>");
+    }else if(language == "eng"){
+        content.innerHTML = article.content_eng.replace(/\n/g,"<br>");
+    }else if(language == "jap"){
+        content.innerHTML = article.content_jap.replace(/\n/g,"<br>");
     }
 }

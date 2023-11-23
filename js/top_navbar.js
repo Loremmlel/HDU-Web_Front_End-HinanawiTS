@@ -74,7 +74,7 @@ const css_mode= //夜间模式样式
         background-color:gray;\
         color:whitesmoke;\
     }\
-    .audio-selector{\
+    .audio-selector,.text-language{\
         background-color:gray;\
         color:whitesmoke;\
     }\
