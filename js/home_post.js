@@ -4,20 +4,19 @@ var post_pinned_flag = 0;
 document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，添加8个缩减过的post
     console.log(document.referrer);
     upload_from_json("../json/articles/articles.json",8);
-
+    window.onscroll = ()=>{
+        // 窗口高度
+        var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+          // 页面高度
+        var documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+          // 滚动条位置
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if ((windowHeight + scrollTop + 2) >= documentHeight) {
+            upload_from_json("../json/articles/articles.json",8);
+        }
+      }
 })
 //判断整个文档滚动至底部
-window.onscroll = ()=>{
-    // 窗口高度
-    var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
-      // 页面高度
-    var documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-      // 滚动条位置
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    if ((windowHeight + scrollTop + 2) >= documentHeight) {
-        upload_from_json("../json/articles/articles.json",8);
-    }
-  }
 function upload_from_json(path,num){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -47,7 +46,6 @@ function split_articles(articles,num){
     return splited_articles;
 }
 function post_cutted(articles){
-    var content_left = document.getElementsByClassName("content-left")[0];
     for(var i=0;i<articles.length;i++){
         let new_post = document.createElement("div");
         new_post.className = "post";
@@ -72,11 +70,18 @@ function post_cutted(articles){
                     </div>
                 </div>
         `;
+        post_cutted_timing(new_post,i);
+    }
+}
+
+function post_cutted_timing(new_post,i){ //定时post，方便展现动画~
+    setTimeout(()=>{
+        var content_left = document.getElementsByClassName("content-left")[0];
         let blank = document.createElement("div");//文章下方的空白
         blank.className = "post-blank"; 
         content_left.appendChild(new_post);
         content_left.appendChild(blank); 
-    }
+    },i*300);
 }
 
 function post_pinned(articles){
