@@ -12,7 +12,7 @@
 }
 @keyframes tiltAnimation
 {
-    0% {transform: perspective(800px) rotateX(60deg) ;}
+    0% {transform: perspective(800px) rotateX(45deg) ;}
     50% {transform: perspective(400px) rotateX(-10deg) ;}
     100% {transform: perspective(800px) rotateX(0deg) ;}
 }
