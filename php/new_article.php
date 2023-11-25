@@ -9,7 +9,7 @@ foreach($new_article as $key => $value){ //服务端校验
         exit;
     }
 }
-if($new_article['answer'] != '林德游'){
+if($new_article['answer'] != 'Def233'){
     http_response_code(403);
     exit;
 }

@@ -70,6 +70,10 @@ h5
 {
     justify-content: center;
 }
+#article-question
+{
+    width: 20%;
+}
 #submit
 {
     width: 10%;
