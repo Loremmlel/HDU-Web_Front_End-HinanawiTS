@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/skeleton.css">
+    <link rel="stylesheet" href="../css/border.css">
+    <link rel="stylesheet" href="../css/font_style.css">
+    <link rel="stylesheet" href="../css/new_article.css">
+    <script src="../js/top_navbar.js"></script>
+    <script src="../js/new_article.js"></script>
+    <title>撰写新文章</title>
+</head>
+<body>
+    <div class="top-navigator">
+        <nav class="navbar">
+            <div class="hyperlink">
+                <div class="button-style-switch" id="button-style-switch">
+                    <svg id="icon-sun" viewBox="0 0 1024 1024"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+                        <path d="M501.48 493.55m-233.03 0a233.03 233.03 0 1 0 466.06 0 233.03 233.03 0 1 0-466.06 0Z" fill="#F9C626"></path>
+                        <path d="M501.52 185.35H478.9c-8.28 0-15-6.72-15-15V87.59c0-8.28 6.72-15 15-15h22.62c8.28 0 15 6.72 15 15v82.76c0 8.28-6.72 15-15 15zM281.37 262.76l-16 16c-5.86 5.86-15.36 5.86-21.21 0l-58.52-58.52c-5.86-5.86-5.86-15.36 0-21.21l16-16c5.86-5.86 15.36-5.86 21.21 0l58.52 58.52c5.86 5.86 5.86 15.35 0 21.21zM185.76 478.48v22.62c0 8.28-6.72 15-15 15H88c-8.28 0-15-6.72-15-15v-22.62c0-8.28 6.72-15 15-15h82.76c8.28 0 15 6.72 15 15zM270.69 698.63l16 16c5.86 5.86 5.86 15.36 0 21.21l-58.52 58.52c-5.86 5.86-15.36 5.86-21.21 0l-16-16c-5.86-5.86-5.86-15.36 0-21.21l58.52-58.52c5.85-5.86 15.35-5.86 21.21 0zM486.41 794.24h22.62c8.28 0 15 6.72 15 15V892c0 8.28-6.72 15-15 15h-22.62c-8.28 0-15-6.72-15-15v-82.76c0-8.28 6.72-15 15-15zM706.56 709.31l16-16c5.86-5.86 15.36-5.86 21.21 0l58.52 58.52c5.86 5.86 5.86 15.36 0 21.21l-16 16c-5.86 5.86-15.36 5.86-21.21 0l-58.52-58.52c-5.86-5.85-5.86-15.35 0-21.21zM802.17 493.59v-22.62c0-8.28 6.72-15 15-15h82.76c8.28 0 15 6.72 15 15v22.62c0 8.28-6.72 15-15 15h-82.76c-8.28 0-15-6.72-15-15zM717.24 273.44l-16-16c-5.86-5.86-5.86-15.36 0-21.21l58.52-58.52c5.86-5.86 15.36-5.86 21.21 0l16 16c5.86 5.86 5.86 15.36 0 21.21l-58.52 58.52c-5.86 5.86-15.35 5.86-21.21 0z" fill="#F9C626"></path>
+                    </svg>
+                </div>
+                <div class="button github" id="button-github">
+                    <svg id="icon-github" viewBox="0 0 3786 1024"width="70%" height="70%">
+                        <image xlink:href="../img/svg/GitHub.svg"></image>
+                    </svg>
+                </div>
+                <div class="button mainpage" id="button-mainpage">
+                    <svg id="icon-home" viewBox="0 0 1029 1024" width="20%" height="50%">
+                        <image xlink:href="../img/svg/home.svg"></image>
+                    </svg>
+                    <span class="cursor-default">首页</span>
+                </div>
+                <div class="button new-article" id="button-new-article">
+                    <svg id="icon-new" viewBox="0 0 1024 1024" width="20%" height="70%" style="margin-top: 10px;">
+                        <image xlink:href="../img/svg/new.svg"></image>
+                    </svg>
+                    <span class="cursor-default">新文章</span>
+                </div>
+                <div class="button backstage" id="button-backstage">
+                    <svg id="icon-manage" viewBox="0 0 1024 1024"width="20%" height="70%">
+                        <image xlink:href="../img/svg/setting.svg"></image>
+                    </svg>
+                    <span class="cursor-default">管理</span>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="main">
+        <div id="article-title">
+            <form id="title" name="title">
+                <h5>标题:</h5>
+                <input type="text" autocomplete="on" placeholder="请输入标题">
+            </form>
+        </div>
+        <div id="article-author">
+            <form id="author" name="author">
+                <h5>作者:</h5>
+                <input type="text"autocomplete="on" placeholder="请输入作者名">
+            </form>
+        </div>
+        <div id="article-text">
+            <form id="text" name="text">
+                <h5>正文:</h5>
+                <textarea rows="20" cols="200" name="text" placeholder="请输入正文"></textarea>
+            </form>
+        </div>
+        <div id="article-tag">
+            <form id="tag" name="tag">
+                <h5>标签:</h5>
+                <select id="tag-select" name="tag-select" title="标签">
+
+                </select>
+            </form>
+        </div>
+        <div id="article-time">
+            <h5>时间:</h5>
+            <form id="time" name="time">
+                <select id="year" title="年份">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <select id="month" title="月份">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select id="day" title="日期">
+
+                </select>
+                <input id="date" type="checkbox" value="1" placeholder="">使用当前时间
+            </form>
+        </div>
+        <div id="article-question">
+            <h5>问题:</h5>
+            <form id="question">
+                <input type="text" autocomplete="on" placeholder="网站所有者的真名是什么？">
+            </form>
+        </div>
+    </div>
+    <div id="article-submit" style="margin: 0px;">
+        <button id="submit" type="submit">提交</button>
+    </div>
+</body>
+</html>

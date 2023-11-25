@@ -1,0 +1,76 @@
+/*因为新文章撰写页面的布局和其它网页不同，所以另起一个*/
+body
+{
+    margin: 0px;
+}
+[id^="article"]
+{
+    display: flex;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 2%;
+    align-items: center;
+}
+form
+{
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+input
+{
+    height: 80%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin: 5px;
+}
+h5
+{
+    margin: 0px;
+    overflow-wrap: normal;
+}
+#main
+{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    padding: 3%;
+    padding-top: 8%;
+    flex-wrap: wrap;
+}
+#article-title,#article-tag
+{
+    display: flex;
+    justify-content: center;
+}
+#article-text
+{
+    padding: 2%;
+}
+#text
+{
+    flex-direction: column;
+    align-items: flex-start;
+}
+#text textarea
+{
+    width: 100%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin: 5px;
+}
+#article-time form select
+{
+    margin-left:10px ;
+}
+#article-submit
+{
+    justify-content: center;
+}
+#submit
+{
+    width: 10%;
+}
