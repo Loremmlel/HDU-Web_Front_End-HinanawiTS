@@ -39,7 +39,7 @@ const css_mode= //夜间模式样式
         color:whitesmoke;\
         border: 2px solid dimgray;\
     }\
-    .menu-profile,.menu-tag,.menu-time{\
+    .menu-profile,.menu-tag,.menu-year,.menu-author{\
         background-color:dimgray;\
         color:whitesmoke;\
         border: 2px solid dimgray;\
@@ -77,6 +77,11 @@ const css_mode= //夜间模式样式
     .audio-selector,.text-language{\
         background-color:gray;\
         color:whitesmoke;\
+    }\
+    .page-button{\
+        background-color:dimgray;\
+        color:whitesmoke;\
+        border-color:dimgray;\
     }\
     ";
 var current_path_index = 0; //svg图像索引
@@ -125,14 +130,7 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
     }
     if(button_mainpage){
         button_mainpage.addEventListener("click", function () {
-            if(url == "www.hinanawits.com"){
-                window.open("http://www.hinanawits.com/html/main","_self");
-            }
-            else if(url == "loremmlel.github.io"){
-                window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/main","_self");
-            }else{
-                windows.open("");
-            }
+                window.open("/html/main?page=1","_self");
         })
     }else{
         console.error("button-mainpage not found");

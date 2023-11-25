@@ -1,5 +1,6 @@
 <?php
 $comment = $_POST;
+$user_ip = $_SERVER['REMOTE_ADDR'];
 $anonymity_flag = 0; //0不匿名，1匿名
 $username_flag = 0; //0没有用户名，1有用户名
 $content_flag = 0; //0无内容。1有内容
@@ -46,7 +47,8 @@ $new_comment = array(
     'article_id' => $article_id,
     'user_name' => $user_name,
     'content' => $content,
-    'time' => $time
+    'time' => $time,
+    'ip' => $user_ip
 );
 $data['comments'][] = $new_comment;
 $new_json = json_encode($data,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);

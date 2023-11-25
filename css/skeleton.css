@@ -39,7 +39,7 @@
 @keyframes scrollText
 {
     0%{transform: translateX(0);}
-    100%{transform: translateX(-150%);}
+    100%{transform: translateX(-220%);}
 }
 .notice span:hover
 {
@@ -106,12 +106,13 @@
     width: 20%;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.2s,color 0.2s;
+    transition: background-color 0.5s ease,color 0.4s ease,border-color 0.4s ease;
 }
 .button:hover
 {
     background-color: rgb(193, 255, 255);
     color:rgb(255, 246, 253);
+    border-color: (193, 255, 255);
 }
 .information
 {
@@ -224,4 +225,50 @@
 {
     visibility: visible;
     opacity: 1;
+}
+.page-button-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.page-button
+{
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    width: 3%;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    margin: 0.5%;
+}
+.buttontip
+{
+    visibility: hidden;
+    width: 60px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    margin-top: -60px;
+    margin-left: 0px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.page-button:hover .buttontip
+{
+    visibility: visible;
+    opacity: 1;
+}
+.page-button:hover
+{
+    background-color: rgb(193, 255, 255);
+    border-color: rgb(193, 255, 255);
+    color:white;
 }

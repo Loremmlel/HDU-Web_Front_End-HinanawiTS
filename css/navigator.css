@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 100%;
 }
-.menu-profile,.menu-tag,.menu-time
+[class^="menu"]
 {
     display: flex;
     background-color: white;
@@ -36,7 +36,7 @@
     text-align: center;
     align-items: center;
 }
-.tag,.time
+.tag,.year,.author
 {
     display: flex;
     flex-direction: column;
@@ -44,11 +44,11 @@
     padding: 5%;
     margin: 0;
 }
-.tag>li
+li
 {
     width: 100%;
 }
-.tag-main,.time-main
+[class*="-main"]
 {
     display: flex;
     justify-content: flex-start;
