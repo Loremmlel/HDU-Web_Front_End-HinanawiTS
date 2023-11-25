@@ -1,10 +1,10 @@
-.post,.list,.one-comment
+.post,.list,.one-comment,.page-button
 {
     border: 2px solid white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
-.menu-profile,.menu-tag,.menu-time
+[class^="menu"]
 {
     border: 2px solid white;
     border-radius: 5px;

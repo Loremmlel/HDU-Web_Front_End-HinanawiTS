@@ -1,0 +1,20 @@
+{
+    "tag_标签":[
+        {"chs":"远行星号","eng":"starsector"},
+        {"chs":"随笔","eng":"casualessay"},
+        {"chs":"图图","eng":"image_video"},
+        {"chs":"年彬文章","eng":"lovemaster"},
+        {"chs":"技术笔记","eng":"technical_notes"}
+    ],
+    "year_时间线":[
+        {"chs":"2023","eng":"2023"},
+        {"chs":"2022","eng":"2022"},
+        {"chs":"2021","eng":"2021"},
+        {"chs":"2020","eng":"2020"},
+        {"chs":"2019","eng":"2019"}
+    ],
+    "author_作者":[
+        {"chs":"柚子","eng":"yuzu"},
+        {"chs":"蔡年彬","eng":"cnb"}
+    ]
+}

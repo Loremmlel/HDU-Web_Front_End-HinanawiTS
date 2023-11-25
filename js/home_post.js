@@ -1,20 +1,10 @@
 //实现主页的文章截取，以及拉到底部自动补充的功能。还有跳转到其他页面调用php的功能。
-var post_id = 0;
 var post_pinned_flag = 0;
+var page = window.location.search.match(/\?page=(\d+)/)[1]; //页数
+var articles_num = 0;
 document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，添加8个缩减过的post
     console.log(document.referrer);
-    upload_from_json("../json/articles/articles.json",8);
-    window.onscroll = ()=>{
-        // 窗口高度
-        var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
-          // 页面高度
-        var documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-          // 滚动条位置
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if ((windowHeight + scrollTop + 2) >= documentHeight) {
-            upload_from_json("../json/articles/articles.json",8);
-        }
-      }
+    upload_from_json("../json/articles/articles.json",10);
 })
 //判断整个文档滚动至底部
 function upload_from_json(path,num){
@@ -22,12 +12,13 @@ function upload_from_json(path,num){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var articles = JSON.parse(xhr.responseText);  //articles是一个对象，内有一个也叫articles的数组
-            if(post_pinned_flag == 0){
+            if(post_pinned_flag == 0 && page == 1){
                 post_pinned(articles); //置顶文章
                 post_pinned_flag = 1;
             }
+            articles_num = articles.articles.length;
             var splited_articles = split_articles(articles,num);
-            post_cutted(splited_articles);
+            post_cutted(splited_articles,add_page_button);
         }
     }
     xhr.open("GET",path,true);
@@ -36,16 +27,13 @@ function upload_from_json(path,num){
 }
 function split_articles(articles,num){
     var splited_articles = [];
-    var count = 0;
-    for(var i=articles.articles.length-1;i-post_id>=0 && i>=(articles.articles.length)-num;i--){//最新的文章在最上面，所以从后往前遍历
-        if(articles.articles[i-post_id].pinned == false)
-            splited_articles.push(articles.articles[i-post_id]);
-        count++;
+    for(var i=articles.articles.length-1;i-(page-1) * num>=0 && i>=(articles.articles.length)-num;i--){//最新的文章在最上面，所以从后往前遍历
+        if(articles.articles[i-(page-1) * num].pinned == false)
+            splited_articles.push(articles.articles[i-(page-1) * num]);
     }
-    post_id += count;
     return splited_articles;
 }
-function post_cutted(articles){
+function post_cutted(articles,callback){
     for(var i=0;i<articles.length;i++){
         let new_post = document.createElement("div");
         new_post.className = "post";
@@ -65,15 +53,15 @@ function post_cutted(articles){
                         <div class="post-foot">
                             <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${articles[i].tag_eng}">${articles[i].tag_chs}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${articles[i].id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/list?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
+                            <span class="smaller fade-text">by ${articles[i].author_chs}&nbsp;<a class="non-underline" href="list/list?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
                         </div>
                     </div>
                 </div>
         `;
         post_cutted_timing(new_post,i);
     }
+    setTimeout(callback,articles.length*300);
 }
-
 function post_cutted_timing(new_post,i){ //定时post，方便展现动画~
     setTimeout(()=>{
         var content_left = document.getElementsByClassName("content-left")[0];
@@ -124,4 +112,113 @@ function post_pinned(articles){
     blank.className = "post-blank"; 
     content_left.appendChild(new_post);
     content_left.appendChild(blank); 
+}
+
+function add_page_button(){ //添加页面按钮
+    var page_num = Math.ceil(articles_num / 10); //总共有多少页，向上取整
+    var content_left = document.querySelector(".content-left");
+    var page_button_container = document.createElement("div");
+    page_button_container.className = "page-button-container";
+    //总共至多生成七个页面按钮。就按顺序而不是循环定义和添加了。
+    //（水平太次）<🤣👉😭
+    var leftmost = document.createElement("div");
+    leftmost.className = "page-button";
+    leftmost.onclick = ()=>{
+        window.open("main?page=1","_self");
+    };
+    leftmost.innerHTML = `
+    ❰❰
+    <div class="buttontip">首页</div>
+    `
+    page_button_container.appendChild(leftmost);
+    var previous = document.createElement("div");
+    previous.className = "page-button";
+    previous.onclick = ()=>{
+        if(page == 1){
+            window.open("main?page=1","_self");
+        }
+        else{
+            window.open("main?page="+(page-1),"_self");
+        }
+    }
+    previous.innerHTML = `
+    ❰
+    <div class="buttontip">上一页</div>
+    `
+    page_button_container.appendChild(previous);
+    if(page!=1){
+        var previouspage = document.createElement("div");
+        previouspage.className = "page-button";
+        previouspage.onclick = ()=>{
+            window.open("main?page="+(parseInt(page)-1),"_self");
+        };
+        previouspage.innerHTML = `
+        ${parseInt(page)-1}
+        <div class="buttontip">第${parseInt(page)-1}页</div>
+        `;
+        page_button_container.appendChild(previouspage);
+    }
+    var current = document.createElement("div");
+    current.className = "page-button";
+    current.onclick = ()=>{
+        window.open("main?page="+page,"_self");
+    };
+    current.innerHTML = `
+    ${page}
+    <div class="buttontip">第${page}页</div>
+    `;
+    page_button_container.appendChild(current);
+    if(page!=page_num){
+        var nextpage = document.createElement("div");
+        nextpage.className = "page-button";
+        nextpage.onclick = ()=>{
+            window.open("main?page="+(parseInt(page)+1),"_self");
+        };
+        nextpage.innerHTML = `
+        ${parseInt(page)+1}
+        <div class="buttontip">第${parseInt(page)+1}页</div>
+        `;
+        page_button_container.appendChild(nextpage);
+    }
+    if(page < page_num - 1){
+        var dot = document.createElement("div");
+        dot.innerHTML = "...";
+        page_button_container.appendChild(dot);
+        var lastpage = document.createElement("div");
+        lastpage.className = "page-button";
+        lastpage.onclick = ()=>{
+            window.open("main?page="+(page_num),"_self");
+        };
+        lastpage.innerHTML = `
+        ${page_num}
+        <div class="buttontip">第${page_num}页</div>
+        `;
+        page_button_container.appendChild(lastpage);
+    }
+    var next = document.createElement("div");
+    next.className = "page-button";
+    next.onclick = ()=>{
+        if(page == page_num){
+            window.open("main?page="+(page_num),"_self");
+        }
+        else{
+            window.open("main?page="+(parseInt(page)+1),"_self");
+        }
+    }
+    next.innerHTML = `
+    ❱
+    <div class="buttontip">下一页</div>
+    `
+    page_button_container.appendChild(next);
+    var rightmost = document.createElement("div");
+    rightmost.className = "page-button";
+    rightmost.onclick = ()=>{
+        window.open("main?page="+page_num,"_self");
+    };
+    rightmost.innerHTML = `
+    ❱❱
+    <div class="buttontip">末页</div>
+    `
+    page_button_container.appendChild(rightmost);
+    content_left.appendChild(page_button_container);
 }
