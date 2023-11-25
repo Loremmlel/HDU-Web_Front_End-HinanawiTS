@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var search = window.location.search;
     var matched = search.match(/\?property=(.*)&name=(.*)/);//matched[1]表示是tag还是year，[2]表示具体的
+    console.log(matched);
     upload_list_from_json("../../json/articles/articles.json",matched);
 });
 function upload_list_from_json(path,property){
@@ -23,11 +24,11 @@ function match_property(articles,property){
     if(property[1]=="tag"){
         title.innerHTML += "标签";
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
-            if(articles[i].tag_eng == property[2]){
+            if(encodeURIComponent(articles[i].tag) == property[2]){
                 matched_articles.push(articles[i]);
             }
         }
-        title.innerHTML += "-"+matched_articles[0].tag_chs;//匹配到的文章的标签肯定没问题啦。
+        title.innerHTML += "-"+matched_articles[0].tag;//匹配到的文章的标签肯定没问题啦。
     }else if(property[1]=="year"){
         title.innerHTML += "时间";
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
@@ -39,11 +40,11 @@ function match_property(articles,property){
     }else if(property[1]=="author"){
         title.innerHTML += "作者";
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
-            if(articles[i].author_eng == property[2]){
+            if(encodeURIComponent(articles[i].author) == property[2]){
                 matched_articles.push(articles[i]);
             }
         }
-        title.innerHTML += "-"+matched_articles[0].author_chs;
+        title.innerHTML += "-"+matched_articles[0].author;
     }
     head.appendChild(title);
     return matched_articles;
