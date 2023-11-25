@@ -30,7 +30,7 @@ if($content_flag == 0 || $username_flag == 0){
 date_default_timezone_set('Asia/Shanghai');
 $json_data = file_get_contents('../json/comments/comments.json');
 $data = json_decode($json_data,true);
-$id = count($data['comments']) + 1;
+$id = end($data['comments'])['id'] + 1;
 $article_id;
 $user_name;
 preg_match('/post_id=(\d+)/',$url,$article_id); //匹配文章id

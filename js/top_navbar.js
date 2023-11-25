@@ -135,6 +135,11 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
     }else{
         console.error("button-mainpage not found");
     }
+    if(button_new_article){
+        button_new_article.addEventListener("click", function () {
+            window.open("/html/new_article","_self");
+        });
+    }
     if(referrer == "http://www.hinanawits.com/"){ //第一次打开主页时的referrer是这个地址。可以用于统计浏览量。
         var statistical_request = new XMLHttpRequest();
         statistical_request.open("GET","../php/statistic.php",true);

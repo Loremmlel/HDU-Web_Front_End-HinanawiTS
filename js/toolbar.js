@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",function(){
         toolbar_status = (toolbar_status + 1) % 2;
         change_status(toolbar,toolbar_status);
     })
-    item_toggle.addEventListener("click",function(){
+    item_toggle.addEventListener("click",function(){ //右下角工具框的响应
         toolbar_status = (toolbar_status + 1) % 2;
         change_status(toolbar,toolbar_status);
     })
