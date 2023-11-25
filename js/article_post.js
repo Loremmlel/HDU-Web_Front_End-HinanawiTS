@@ -79,9 +79,9 @@ function post_article(article){ //将文章信息写入页面
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${article.author_chs}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                            <span class="smaller fade-text">by ${article.author_}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
                     </div>
                     <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
@@ -129,9 +129,9 @@ function post_article(article){ //将文章信息写入页面
                     </div>
                     <div class="post-dot"></div>
                     <div class="post-foot">
-                        <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag_eng}">${article.tag_chs}&nbsp;</a></span>
+                        <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
                         <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                        <span class="smaller fade-text">by ${article.author_chs}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                        <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                     </div>
                 </div>
                 <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">

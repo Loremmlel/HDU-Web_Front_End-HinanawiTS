@@ -51,9 +51,9 @@ function post_cutted(articles,callback){
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${articles[i].tag_eng}">${articles[i].tag_chs}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${articles[i].tag}">${articles[i].tag}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${articles[i].id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${articles[i].author_chs}&nbsp;<a class="non-underline" href="list/list?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
+                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/list?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ function post_pinned(articles){
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${pinned_article.tag_eng}">${pinned_article.tag_chs}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${pinned_article.tag}">${pinned_article.tag}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${pinned_article.id}">#&nbsp;</a></span>
                             <span class="smaller fade-text">by ${pinned_article.author}&nbsp;<a class="non-underline" href="list/list?property=year&name=${pinned_article.year}">${pinned_article.year}</a>-${pinned_article.time}</span>
                         </div>
