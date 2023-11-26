@@ -12,7 +12,7 @@ function upload_from_json(article_path,comment_path,id){
     article_xhr.onreadystatechange = function(){
         if(article_xhr.readyState == 4 && article_xhr.status == 200){
             var articles = JSON.parse(article_xhr.responseText);  //articles是一个对象，内有一个也叫articles的数组
-            global_articles = articles.articles;
+            global_articles = articles.articles;//只是用来指示上一篇、下一篇ID的全局变量……
             var article = match(articles.articles,id); //匹配id相符合的记录
             post_article(article);
             if(article.tag == '年彬文章'){
