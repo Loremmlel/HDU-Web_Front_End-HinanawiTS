@@ -111,14 +111,8 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             var cssState = { //把css状态保存到cookie中
                 currentStyleIndex: current_style_index
             }
-            if(url == "www.hinanawits.com"){
-                document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=.hinanawits.com;path=/";
-                document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=.hinanawits.com;path=/";
-            }
-            else if(url == "loremmlel.github.io"){
-                document.cookie = "svgState=" + JSON.stringify(svgState) + ";domain=loremmlel.github.io;path=/";
-                document.cookie = "cssState=" + JSON.stringify(cssState) + ";domain=loremmlel.github.io;path=/";
-            }
+            document.cookie = "svgState=" + JSON.stringify(svgState) + `;domain=${url};path=/`;
+            document.cookie = "cssState=" + JSON.stringify(cssState) + `;domain=${url};path=/`;
         });
     }
     if(button_github){
