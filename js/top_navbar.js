@@ -133,6 +133,15 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
         button_new_article.addEventListener("click", function () {
             window.open("/html/new_article","_self");
         });
+    }else{
+        console.error("button-new-article not found");
+    }
+    if(button_backstage){
+        button_backstage.addEventListener("click", function () {
+            window.open("/html/login","_self");
+        });
+    }else{
+        console.error("button-backstage not found");
     }
     if(referrer == "http://www.hinanawits.com/"){ //第一次打开主页时的referrer是这个地址。可以用于统计浏览量。
         var statistical_request = new XMLHttpRequest();
