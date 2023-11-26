@@ -15,7 +15,7 @@ function upload_from_json(article_path,comment_path,id){
             global_articles = articles.articles;
             var article = match(articles.articles,id); //匹配id相符合的记录
             post_article(article);
-            if(article.tag_eng == 'lovemaster'){
+            if(article.tag == '年彬文章'){
                 var button = document.querySelector('.button-check');
                 button.addEventListener("click",function(){
                     audio_lang_flag = 1 - audio_lang_flag;
@@ -81,7 +81,7 @@ function post_article(article){ //将文章信息写入页面
                         <div class="post-foot">
                             <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
                             <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${article.author_}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
                     </div>
                     <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
@@ -92,7 +92,7 @@ function post_article(article){ //将文章信息写入页面
         `;
         var blank = document.createElement("div");//文章下方的空白
         blank.className = "post-blank"; 
-        if(article.tag_eng == 'lovemaster'){ //年彬文章特供语音
+        if(article.tag == '年彬文章'){ //年彬文章特供语音
             new_post.innerHTML =  `
             <div class="post-body">
                 <div class="post-article">
@@ -120,7 +120,11 @@ function post_article(article){ //将文章信息写入页面
                         <select class="audio-selector" title="朗读角色" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
                             <option value="kita">喜多</option>
                             <option value="hitori">波奇</option>
+                            <option value="mahiro">绪山真寻</option>
+                            <option value="nijika">虹夏</option>
+                            <option value="megumin">惠惠</option>
                             <option value="voiceover">旁白</option>
+                            <option value="dingzhen">丁真</option>
                             <option value="kobe">牢大</option>
                             <option value="mikado">孙笑川</option>
                         </select>
@@ -145,7 +149,7 @@ function post_article(article){ //将文章信息写入页面
         content_left.appendChild(blank);
         var head = document.getElementsByTagName("head")[0]; 
         var title = document.createElement("title");
-        title.innerHTML = article.title;
+        title.innerHTML = article.title + "-" + "柚子的小站";
         head.appendChild(title);
 }
 
@@ -191,10 +195,22 @@ function change_lang(flag,id,character){ //改变语音的人物、语言。
     }else if(character == 'hitori'){
         portrait.src = '../../img/hitori.gif';
         portrait.title = '震撼.jpg';
+}else if(character =='mahiro'){
+        portrait.src = '../../img/mahiro.png';
+        portrait.title = '楼上没jj';
+    }else if(character == 'nijika'){
+        portrait.src = '../../img/nijika.gif';
+        portrait.title = 'BYD这呆毛抠图真难受';
+    }else if(character =='megumin'){
+        portrait.src = '../../img/megumin.gif';
+        portrait.title = '感谢萌娘百科，感谢F12';
     }else if(character == 'voiceover'){
         portrait.src = '../../img/voiceover.png';
         portrait.title = '战地1的';
         portrait.alt = '旁白要什么图片？';
+}else if(character == 'dingzhen'){
+        portrait.src = '../../img/dingzhen.png';
+        portrait.title = '原皮丁真，鉴定为纯纯的弱智';
     }else if(character == 'kobe'){
         portrait.src = '../../img/kobe.png';
         portrait.title = 'It\'s been a long day without you my friend.And I\'ll tell you all about it when I see you again.';

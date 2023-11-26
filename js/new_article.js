@@ -143,6 +143,7 @@ function Submit(){
                 if(this.status == 200){
                     alert("文章发布成功");
                     console.log(this.responseText);
+                    location.reload();
                 }else{
                     alert("文章发布失败");
                 }
