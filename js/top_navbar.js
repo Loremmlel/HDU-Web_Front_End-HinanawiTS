@@ -83,6 +83,21 @@ const css_mode= //夜间模式样式
         color:whitesmoke;\
         border-color:dimgray;\
     }\
+    [id^='article-']{\
+        background-color:dimgray;\
+        color:whitesmoke;\
+        border: 2px solid dimgray;\
+    }\
+    textarea,input{\
+        background-color:dimgray;\
+        color:whitesmoke;\
+        border: 2px solid dimgray;\
+    }\
+    [id^='choice-'],#main-container{\
+        background-color:dimgray;\
+        color:whitesmoke;\
+        border: 2px solid dimgray;\
+    }\
     ";
 var current_path_index = 0; //svg图像索引
 var current_style_index = 0; //白天、夜间模式索引
