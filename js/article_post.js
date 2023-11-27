@@ -120,11 +120,7 @@ function post_article(article){ //将文章信息写入页面
                         <select class="audio-selector" title="朗读角色" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
                             <option value="kita">喜多</option>
                             <option value="hitori">波奇</option>
-                            <option value="mahiro">绪山真寻</option>
-                            <option value="nijika">虹夏</option>
-                            <option value="megumin">惠惠</option>
                             <option value="voiceover">旁白</option>
-                            <option value="dingzhen">丁真</option>
                             <option value="kobe">牢大</option>
                             <option value="mikado">孙笑川</option>
                         </select>
@@ -195,22 +191,10 @@ function change_lang(flag,id,character){ //改变语音的人物、语言。
     }else if(character == 'hitori'){
         portrait.src = '../../img/hitori.gif';
         portrait.title = '震撼.jpg';
-}else if(character =='mahiro'){
-        portrait.src = '../../img/mahiro.png';
-        portrait.title = '楼上没jj';
-    }else if(character == 'nijika'){
-        portrait.src = '../../img/nijika.gif';
-        portrait.title = 'BYD这呆毛抠图真难受';
-    }else if(character =='megumin'){
-        portrait.src = '../../img/megumin.gif';
-        portrait.title = '感谢萌娘百科，感谢F12';
     }else if(character == 'voiceover'){
         portrait.src = '../../img/voiceover.png';
         portrait.title = '战地1的';
         portrait.alt = '旁白要什么图片？';
-}else if(character == 'dingzhen'){
-        portrait.src = '../../img/dingzhen.png';
-        portrait.title = '原皮丁真，鉴定为纯纯的弱智';
     }else if(character == 'kobe'){
         portrait.src = '../../img/kobe.png';
         portrait.title = 'It\'s been a long day without you my friend.And I\'ll tell you all about it when I see you again.';
