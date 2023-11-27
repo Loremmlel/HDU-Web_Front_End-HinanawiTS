@@ -39,7 +39,7 @@
 @keyframes scrollText
 {
     0%{transform: translateX(0);}
-    100%{transform: translateX(-220%);}
+    100%{transform: translateX(-150%);}
 }
 .notice span:hover
 {
