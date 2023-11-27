@@ -59,4 +59,13 @@ h2
 .raw .crud
 {
     float: right;
+    cursor: pointer;
+}
+.raw .crud [id^="delete-"],.raw .crud [id^="modify-"]
+{
+    transition: all 0.5s ease;
+}
+.raw .crud [id^="delete-"]:hover,.raw .crud [id^="modify-"]:hover
+{
+    color:aqua
 }
