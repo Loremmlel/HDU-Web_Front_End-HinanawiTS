@@ -1,8 +1,15 @@
+var id = window.location.search.split("=")[1];
+var time = "00:00:00";//存储文章时分秒-
 document.addEventListener("DOMContentLoaded",function(){
     SetDay();//选中月份，设定日期是31/30/29/28
     SetTag();//设定tag的值
     UseDate();//设定是否要用当前时间
-    Submit(); //提交事件
+    if(typeof (id) === "undefined"){
+        Submit(); //提交事件
+    }else{
+        GetArticle();//把文章信息填充到页面上
+        Modify();//修改文章事件
+    }
 })
 function SetDay(){
     var year_selector = document.querySelector("#year");
@@ -93,36 +100,7 @@ function UseDate(){
 function Submit(){
     var button = document.querySelector("#submit")
     button.addEventListener("click",function(){
-        var formData = 
-        {
-            "title":document.querySelector("#title").querySelector("input").value,
-            "content":document.querySelector("#text").querySelector("textarea").value,
-            "author":document.querySelector("#author").querySelector("input").value,
-            "tag":"",
-            "year":"",
-            "time":"",
-            "img_url":"",
-            "pinned":false,
-            "answer":document.querySelector("#question").querySelector("input").value
-        };
-        (()=>{ //设定tag
-            if(document.querySelector("#tag").querySelector("select").value == "自定义"){
-                formData.tag = document.querySelector("#diy").querySelector("input").value;
-            }else{
-                formData.tag = document.querySelector("#tag").querySelector("select").value;
-            }
-        })();//立即执行匿名函数
-        (()=>{ //设定日期
-            if(document.querySelector("#date").checked){
-                var myDate = new Date();
-                formData.year = myDate.getFullYear();
-                formData.time = myDate.getMonth() + 1 + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
-            }else
-            {
-                formData.year = document.querySelector("#year").value;
-                formData.time = document.querySelector("#month").value + "-" + document.querySelector("#day").value + " " + "00:00:00";
-            }
-        })();
+        var formData = Get_Data();
         var flag = 0;
         Object.keys(formData).forEach(keys=>{ //客户端校验
             if(formData[keys] == "" && keys!="img_url" && keys!="pinned" && flag === 0){
@@ -151,4 +129,106 @@ function Submit(){
         };
         xhr.send(JSON.stringify(formData));
     })
+}
+
+function GetArticle(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4&&xhr.status == 200){
+            var articles = (JSON.parse(xhr.responseText)).articles;
+            var index = 0;
+            for(var i=0;i<articles.length;i++){
+                if(articles[i].id === id){
+                    index = i;
+                    break;
+                }
+            }
+            var title = document.querySelector("#title").querySelector("input");
+            var content = document.querySelector("#text").querySelector("textarea");
+            var author = document.querySelector("#author").querySelector("input");
+            var answer = document.querySelector("#question").querySelector("input");
+            var tag = document.querySelector("#tag").querySelector("select");
+            var year = document.querySelector("#year");
+            var month = document.querySelector("#month");
+            var day = document.querySelector("#day");
+            title.value = articles[index].title;
+            content.value = articles[index].content;
+            author.value = articles[index].author;
+            answer.value = "😉";
+            tag.value = articles[index].tag;
+            year.value = articles[index].year;
+            month.value = articles[index].time.split("-")[0];
+            day.value = articles[index].time.split(" ")[0].split("-")[1];
+            time = articles[index].time.split(" ")[1];
+        }
+    };
+    xhr.open("GET","../json/articles/articles.json",true);
+    xhr.setRequestHeader("Content-Type","application/json");
+    xhr.send();
+}
+
+function Modify(){
+    var button = document.querySelector("#submit")
+    button.addEventListener("click",function(){
+        var formData = Get_Data();
+        formData.id = id;
+        Object.keys(formData).forEach(keys=>{ //客户端校验
+            if(formData[keys] == "" && keys!="img_url" && keys!="pinned" && flag === 0){
+                console.log(keys);
+                flag = 1;
+                alert("请填写完整信息");
+                formData = {};
+            }
+        })
+        if(Object.keys(formData).length == 0){ 
+            return; 
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4&&xhr.status == 200){
+                alert("文章修改成功");
+            }
+            if(xhr.status == 403){
+                alert("403 Forbidden");
+            }else if(xhr.status == 404){
+                alert("404 Not Found");
+            }
+        }
+        xhr.open("POST","../php/backstage.php",true);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send(`action=modify_article&id=${id}&new_article=${JSON.stringify(formData)}`);
+    })
+}
+
+function Get_Data(){
+    var formData = 
+        {
+            "title":document.querySelector("#title").querySelector("input").value,
+            "content":document.querySelector("#text").querySelector("textarea").value,
+            "author":document.querySelector("#author").querySelector("input").value,
+            "tag":"",
+            "year":"",
+            "time":"",
+            "img_url":"",
+            "pinned":false,
+            "answer":document.querySelector("#question").querySelector("input").value
+        };
+    (()=>{ //设定tag
+        if(document.querySelector("#tag").querySelector("select").value == "自定义"){
+            formData.tag = document.querySelector("#diy").querySelector("input").value;
+        }else{
+            formData.tag = document.querySelector("#tag").querySelector("select").value;
+        }
+    })();//立即执行匿名函数
+    (()=>{ //设定日期
+        if(document.querySelector("#date").checked){
+            var myDate = new Date();
+            formData.year = myDate.getFullYear();
+            formData.time = myDate.getMonth() + 1 + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
+        }else{
+            formData.year = document.querySelector("#year").value;
+            formData.time = document.querySelector("#month").value + "-" + document.querySelector("#day").value + " " + time;
+        }
+    })();
+    return formData;
 }
