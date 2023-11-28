@@ -123,9 +123,6 @@ function Submit(){
                 formData.append(key,img[key]);
             }
         }
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
         var xhr = new XMLHttpRequest();
         xhr.open("POST","../php/new_article.php",true);
         xhr.onreadystatechange = function(){
@@ -183,18 +180,30 @@ function GetArticle(){
 function Modify(){
     var button = document.querySelector("#submit")
     button.addEventListener("click",function(){
-        var formData = Get_Data();
-        formData.id = id;
-        Object.keys(formData).forEach(keys=>{ //客户端校验
-            if(formData[keys] == ""  && keys!="pinned" && flag === 0){
+        var data = Get_Data();
+        data.id = id;
+        Object.keys(data).forEach(keys=>{ //客户端校验
+            if(data[keys] == ""  && keys!="pinned" && flag === 0){
                 console.log(keys);
                 flag = 1;
                 alert("请填写完整信息");
-                formData = {};
+                data = {};
             }
         })
         if(Object.keys(formData).length == 0){ 
             return; 
+        }
+        if(Object.keys(data).length == 0){ //这才能判断对象是否为空。而不是object=={}
+            return; //在上面的foreach里return只会跳出foreach
+        }
+        var formData = new FormData(); //用FormData对象才能把文件上传给php
+        for(var key in data){//把普通js对象的数据移动给FormData对象
+            formData.append(key,data[key]);
+        }
+        if(Object.keys(img).length!= 0){//添加文件（图片）信息
+            for(var key in img){
+                formData.append(key,img[key]);
+            }
         }
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){

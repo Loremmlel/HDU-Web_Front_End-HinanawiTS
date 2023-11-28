@@ -16,6 +16,11 @@ if($action == 'delete_article'){
         }
     }
     if($index !=0){
+        foreach($articles['articles'][$index] as $key => $value){
+            if(strpos($key,'img') == 0){ //删除图片
+                unlink($value);
+            }
+        }
         unset($articles['articles'][$index]);
         $new_json = json_encode($articles,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
         file_put_contents('../json/articles/articles.json',$new_json);
