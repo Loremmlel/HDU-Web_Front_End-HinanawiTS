@@ -234,6 +234,7 @@ function Get_Data(){
             "pinned":false,
             "answer":document.querySelector("#question").querySelector("input").value
         };
+    //当时为什么要用立即执行的匿名函数呢，我也不知道。
     (()=>{ //设定tag
         if(document.querySelector("#tag").querySelector("select").value == "自定义"){
             formData.tag = document.querySelector("#diy").querySelector("input").value;
