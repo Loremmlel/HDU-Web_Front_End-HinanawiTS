@@ -39,7 +39,7 @@
     background-repeat: repeat-y;
     margin-top: 5px;
 }*/
-.post_article
+.post-article
 {
     display: flex;
     flex: 1;
@@ -60,7 +60,12 @@
     width: 100%;
     word-break: break-all;
 }
-.post-text>.image
+.post-image
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.post-text .image
 {
     float: right;
     order: 999;

@@ -1,8 +1,10 @@
 var id = window.location.search.split("=")[1];
 var time = "00:00:00";//存储文章时分秒-
+var img = {}; //全局变量，存储上传的文件。
 document.addEventListener("DOMContentLoaded",function(){
     SetDay();//选中月份，设定日期是31/30/29/28
     SetTag();//设定tag的值
+    GetImg();//给input type=file添加事件监听器
     UseDate();//设定是否要用当前时间
     if(typeof (id) === "undefined"){
         Submit(); //提交事件
@@ -100,34 +102,45 @@ function UseDate(){
 function Submit(){
     var button = document.querySelector("#submit")
     button.addEventListener("click",function(){
-        var formData = Get_Data();
+        var data = Get_Data();
         var flag = 0;
-        Object.keys(formData).forEach(keys=>{ //客户端校验
-            if(formData[keys] == "" && keys!="img_url" && keys!="pinned" && flag === 0){
-                console.log(keys);
+        Object.keys(data).forEach(keys=>{ //客户端校验
+            if(data[keys] == ""  && keys!="pinned" && flag === 0){
                 flag = 1;
                 alert("请填写完整信息");
-                formData = {};
+                data = {};
             }
         })
-        if(Object.keys(formData).length == 0){ //这才能判断对象是否为空。而不是object=={}
+        if(Object.keys(data).length == 0){ //这才能判断对象是否为空。而不是object=={}
             return; //在上面的foreach里return只会跳出foreach
+        }
+        var formData = new FormData(); //用FormData对象才能把文件上传给php
+        for(var key in data){//把普通js对象的数据移动给FormData对象
+            formData.append(key,data[key]);
+        }
+        if(Object.keys(img).length!= 0){//添加文件（图片）信息
+            for(var key in img){
+                formData.append(key,img[key]);
+            }
+        }
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
         }
         var xhr = new XMLHttpRequest();
         xhr.open("POST","../php/new_article.php",true);
-        xhr.setRequestHeader("Content-Type","application/json");
         xhr.onreadystatechange = function(){
             if(this.readyState == 4){
                 if(this.status == 200){
                     alert("文章发布成功");
                     console.log(this.responseText);
-                    location.reload();
+                }else if(this.status == 400){
+                    alert("文件上传失败");
                 }else{
                     alert("文章发布失败");
                 }
             }
         };
-        xhr.send(JSON.stringify(formData));
+        xhr.send(formData);
     })
 }
 
@@ -173,7 +186,7 @@ function Modify(){
         var formData = Get_Data();
         formData.id = id;
         Object.keys(formData).forEach(keys=>{ //客户端校验
-            if(formData[keys] == "" && keys!="img_url" && keys!="pinned" && flag === 0){
+            if(formData[keys] == ""  && keys!="pinned" && flag === 0){
                 console.log(keys);
                 flag = 1;
                 alert("请填写完整信息");
@@ -209,7 +222,6 @@ function Get_Data(){
             "tag":"",
             "year":"",
             "time":"",
-            "img_url":"",
             "pinned":false,
             "answer":document.querySelector("#question").querySelector("input").value
         };
@@ -231,4 +243,19 @@ function Get_Data(){
         }
     })();
     return formData;
+}
+
+function GetImg(){
+    var input_file = document.querySelector("#image-input");
+    input_file.addEventListener("change",function(event){
+        img = {}; //重置。
+        var files = event.target.files;
+        for(var i=0;i<files.length;i++){
+            if (!files[i].type.startsWith('image/')) {
+                alert('请选择图片文件');
+                return;
+            }
+            img[`img${i}`] = files[i];
+        }
+    })
 }
