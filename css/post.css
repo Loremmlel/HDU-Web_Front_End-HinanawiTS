@@ -64,11 +64,12 @@
 {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
-.post-text .image
+.post-image img
 {
-    float: right;
-    order: 999;
+    max-width: 100%;
+    max-height: 100%;
 }
 /*.post-dot
 {
