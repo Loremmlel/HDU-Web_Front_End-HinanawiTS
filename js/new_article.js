@@ -181,7 +181,7 @@ function Modify(){
     var button = document.querySelector("#submit")
     button.addEventListener("click",function(){
         var data = Get_Data();
-        data.id = id;
+        data["id"] = id;
         Object.keys(data).forEach(keys=>{ //客户端校验
             if(data[keys] == ""  && keys!="pinned" && flag === 0){
                 console.log(keys);
@@ -190,21 +190,10 @@ function Modify(){
                 data = {};
             }
         })
-        if(Object.keys(formData).length == 0){ 
-            return; 
-        }
         if(Object.keys(data).length == 0){ //这才能判断对象是否为空。而不是object=={}
             return; //在上面的foreach里return只会跳出foreach
         }
-        var formData = new FormData(); //用FormData对象才能把文件上传给php
-        for(var key in data){//把普通js对象的数据移动给FormData对象
-            formData.append(key,data[key]);
-        }
-        if(Object.keys(img).length!= 0){//添加文件（图片）信息
-            for(var key in img){
-                formData.append(key,img[key]);
-            }
-        }
+        //修改文章就懒得支持插入图片了。
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4&&xhr.status == 200){
@@ -218,7 +207,7 @@ function Modify(){
         }
         xhr.open("POST","../php/backstage.php",true);
         xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        xhr.send(`action=modify_article&id=${id}&new_article=${JSON.stringify(formData)}`);
+        xhr.send(`action=modify_article&id=${id}&new_article=${JSON.stringify(data)}`);
     })
 }
 

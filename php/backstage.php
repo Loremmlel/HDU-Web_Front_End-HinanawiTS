@@ -107,7 +107,6 @@ if($action == 'delete_article'){
             'tag' => $new_article['tag'],
             'year' => $new_article['year'],
             'time' => $new_article['time'],
-            'img_url' => $new_article['img_url'],
             'pinned' => $new_article['pinned']
         );
         $articles['articles'][$index] = $article;
