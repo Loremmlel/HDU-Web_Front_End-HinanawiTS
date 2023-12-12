@@ -24,6 +24,7 @@ function upload_from_json(path,num){
     xhr.open("GET",path,true);
     xhr.setRequestHeader("Content-Type","application/json");
     xhr.send();
+    
 }
 function split_articles(articles,num){
     var splited_articles = [];

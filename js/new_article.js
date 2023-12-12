@@ -130,6 +130,7 @@ function Submit(){
                 if(this.status == 200){
                     alert("文章发布成功");
                     console.log(this.responseText);
+                    location.reload();
                 }else if(this.status == 400){
                     alert("文件上传失败");
                 }else{
@@ -193,11 +194,13 @@ function Modify(){
         if(Object.keys(data).length == 0){ //这才能判断对象是否为空。而不是object=={}
             return; //在上面的foreach里return只会跳出foreach
         }
-        //修改文章就懒得支持插入图片了。
+//修改文章就懒得支持插入图片了。
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4&&xhr.status == 200){
                 alert("文章修改成功");
+                console.log(this.responseText);
+                location.reload();
             }
             if(xhr.status == 403){
                 alert("403 Forbidden");
@@ -223,7 +226,7 @@ function Get_Data(){
             "pinned":false,
             "answer":document.querySelector("#question").querySelector("input").value
         };
-    //当时为什么要用立即执行的匿名函数呢，我也不知道。
+//当时为什么要用立即执行的匿名函数呢，我也不知道。
     (()=>{ //设定tag
         if(document.querySelector("#tag").querySelector("select").value == "自定义"){
             formData.tag = document.querySelector("#diy").querySelector("input").value;

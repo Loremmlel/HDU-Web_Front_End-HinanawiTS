@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded",function(){
     var toolbar = document.querySelector('.custom-toolbar');
     var toolbar_item_toggle_active = document.querySelector('.toolbar-item-toggle.active'); //-
     var item_toggle = document.querySelector('.toolbar-item-toggle:not(.active)'); // +
-    var back_to_top = document.querySelector('.toolbar-item');
+    var back_to_top = document.querySelector('.scroll-top');
+    var favorite = document.querySelector('.add-favorite')
     toolbar_item_toggle_active.addEventListener("click",function(){
         toolbar_status = (toolbar_status + 1) % 2;
         change_status(toolbar,toolbar_status);
@@ -15,6 +16,9 @@ document.addEventListener("DOMContentLoaded",function(){
     back_to_top.addEventListener("click",function(){
         scroll_to_top();
     })
+    favorite.addEventListener("click",function(){
+        add_to_favorite();
+    })
 })
 
 function change_status(toolbar,status){
@@ -24,14 +28,14 @@ function change_status(toolbar,status){
     if(status == 0){
         toolbar.classList.add('extend');
         for(var i =0;i<items.length;i++){
-            items[i].style = 'transform: translateY(-50px)';
+            items[i].style = `transform: translateY(-${i*90+50}px)`;
         }
         item_toggle.style = 'display:none';
         item_toggle_active.style = 'display:block';
     }else if(status == 1){
         toolbar.classList.remove('extend');
         for(var i =0;i<items.length;i++){
-            items[i].style = 'transform: translateY(90px)';
+            items[i].style = `transform: translateY(${i*50+90}px)`;
         }
         item_toggle.style = 'display:block';
         item_toggle_active.style = 'display:none';
@@ -52,4 +56,20 @@ function scroll_to_top(){
       scroll_to_top();
     });
   }
+}
+
+function add_to_favorite(){
+    var title = document.title;
+    var url = window.location.href;
+    try {
+    //Firefox或Chrome浏览器添加书签
+    window.sidebar.addPanel(title, url, "");
+    } catch (e) {
+    //IE浏览器添加快捷方式
+        try {
+        window.external.AddFavorite(url, title);
+        } catch (e) {
+        alert("您的浏览器不支持添加到收藏夹功能。请使用Ctrl+D手动添加！");
+        }
+    }
 }

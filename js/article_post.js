@@ -74,9 +74,8 @@ function post_article(article){ //将文章信息写入页面
                                 ${article.content.replace(/\n/g,"<br>")} 
                             </div>
                         </div>
-                        <div class="post-image"></div>
                         <div class="post-dot"></div>
-                        </div>
+                        <div class="post-image"></div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
                             <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
@@ -90,70 +89,69 @@ function post_article(article){ //将文章信息写入页面
                     </div>
                 </div>
         `;
-    var blank = document.createElement("div");//文章下方的空白
-    blank.className = "post-blank"; 
-    if(article.tag == '年彬文章'){ //年彬文章特供语音
-        new_post.innerHTML =  `
-        <div class="post-body">
-            <div class="post-article">
-                <div class="post-title">
-                    <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
-                    <select class="text-language" title="文章语言" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
-                        <option value="chs">简体中文</option>
-                        <option value="eng">英文</option>
-                        <option value="jap">日文</option>
-                    </select>
-                </div>
-                <div class="post-text">
-                    <div>
-                        ${article.content.replace(/\n/g,"<br>")} 
+        var blank = document.createElement("div");//文章下方的空白
+        blank.className = "post-blank"; 
+        if(article.tag == '年彬文章'){ //年彬文章特供语音
+            new_post.innerHTML =  `
+            <div class="post-body">
+                <div class="post-article">
+                    <div class="post-title">
+                        <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
+                        <select class="text-language" title="文章语言" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
+                            <option value="chs">简体中文</option>
+                            <option value="eng">英文</option>
+                            <option value="jap">日文</option>
+                        </select>
+                    </div>
+                    <div class="post-text">
+                        <div>
+                            ${article.content.replace(/\n/g,"<br>")} 
+                        </div>
+                    </div>
+                    <div class="post-audio">
+                        <img class="portrait" src="../../img/kita.gif" style="width:7%;height:7%;">
+                        <audio src="../../audio/${article.id}_kita_chs.mp3" controls></audio>
+                        <input class="button-check" type="checkbox" name="" id="custom">
+                        <label class="check-box" for="custom">
+                            <span class="check-handler"></span>
+                        </label>
+                        <select class="audio-selector" title="朗读角色" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
+                            <option value="kita">喜多</option>
+                            <option value="hitori">波奇</option>
+                            <option value="voiceover">旁白</option>
+                            <option value="kobe">牢大</option>
+                            <option value="mikado">孙笑川</option>
+                        </select>
+                    </div>
+                    <div class="post-dot"></div>
+                    </div>
+                    <div class="post-dot"></div>
+                    <div class="post-foot">
+                        <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
+                        <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
+                        <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                     </div>
                 </div>
-                <div class="post-image"></div>
-                <div class="post-audio">
-                    <img class="portrait" src="../../img/kita.gif" style="width:7%;height:7%;">
-                    <audio src="../../audio/${article.id}_kita_chs.mp3" controls></audio>
-                    <input class="button-check" type="checkbox" name="" id="custom">
-                    <label class="check-box" for="custom">
-                        <span class="check-handler"></span>
-                    </label>
-                    <select class="audio-selector" title="朗读角色" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
-                        <option value="kita">喜多</option>
-                        <option value="hitori">波奇</option>
-                        <option value="voiceover">旁白</option>
-                        <option value="kobe">牢大</option>
-                        <option value="mikado">孙笑川</option>
-                    </select>
-                </div>
-                <div class="post-dot"></div>
-                </div>
-                <div class="post-dot"></div>
-                <div class="post-foot">
-                    <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
-                    <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                    <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
+                        <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
+                        <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
                 </div>
             </div>
-             <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
-                    <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
-                    <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
-            </div>
-        </div>
-        `;
-    }
-    Object.keys(article).forEach(key =>{ //如果包含图片信息，则添加图片
-        if(key.substring(0,3) === "img"){
-            var img = document.createElement("img");
-            img.src = "../" + article[key];
-            new_post.querySelector(".post-image").appendChild(img);
+            `;
         }
-    })
-    content_left.appendChild(new_post);
-    content_left.appendChild(blank);
-    var head = document.getElementsByTagName("head")[0]; 
-    var title = document.createElement("title");
-    title.innerHTML = article.title + "-" + "柚子的小站";
-    head.appendChild(title);
+        Object.keys(article).forEach(key =>{ //如果包含图片信息，则添加图片
+            if(key.substring(0,3) === "img"){
+                var img = document.createElement("img");
+                img.src = "../" + article[key];
+                new_post.querySelector(".post-image").appendChild(img);
+            }
+        })
+        content_left.appendChild(new_post);
+        content_left.appendChild(blank);
+        var head = document.getElementsByTagName("head")[0]; 
+        var title = document.createElement("title");
+        title.innerHTML = article.title + "-" + "柚子的小站";
+        head.appendChild(title);
 }
 
 function select(comments,id){ //挑选符合文章id的评论
