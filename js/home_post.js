@@ -42,19 +42,19 @@ function post_cutted(articles,callback){
                 <div class="post-body">
                     <div class="post-article">
                         <div class="post-title">
-                            <a class="hidden-link moveable-text" href="detail/module?post_id=${articles[i].id}">${articles[i].title}</a>
+                            <a class="hidden-link moveable-text" href="detail/module.html?post_id=${articles[i].id}">${articles[i].title}</a>
                         </div>
                         <div class="post-text">
                             <div>
                                 ${articles[i].content.substr(0,100).replace(/\n/g,"")} 
-                                <a class="non-underline" href="detail/module?post_id=${articles[i].id}">...阅读全文</a>
+                                <a class="non-underline" href="detail/module.html?post_id=${articles[i].id}">...阅读全文</a>
                             </div>
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${articles[i].tag}">${articles[i].tag}&nbsp;</a></span>
-                            <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${articles[i].id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/list?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
+                            <span class="smaller fade-text"><a class="non-underline" href="list/list.html?property=tag&name=${articles[i].tag}">${articles[i].tag}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="detail/module.html?post_id=${articles[i].id}">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by ${articles[i].author}&nbsp;<a class="non-underline" href="list/list.html?property=year&name=${articles[i].year}">${articles[i].year}</a>-${articles[i].time}</span>
                         </div>
                     </div>
                 </div>
@@ -92,19 +92,19 @@ function post_pinned(articles){
                 <div class="post-body">
                     <div class="post-article">
                         <div class="post-title">
-                            <a class="hidden-link moveable-text" href="detail/module?post_id=${pinned_article.id}">${pinned_article.title}</a>
+                            <a class="hidden-link moveable-text" href="detail/module.html?post_id=${pinned_article.id}">${pinned_article.title}</a>
                         </div>
                         <div class="post-text">
                             <div>
                                 ${pinned_article.content.substr(0,100).replace(/\n/g,"")} 
-                                <a class="non-underline" href="detail/module?post_id=${pinned_article.id}">...阅读全文</a>
+                                <a class="non-underline" href="detail/module.html?post_id=${pinned_article.id}">...阅读全文</a>
                             </div>
                         </div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="list/list?property=tag&name=${pinned_article.tag}">${pinned_article.tag}&nbsp;</a></span>
-                            <span class="smaller fade-text"><a class="non-underline" href="detail/module?post_id=${pinned_article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${pinned_article.author}&nbsp;<a class="non-underline" href="list/list?property=year&name=${pinned_article.year}">${pinned_article.year}</a>-${pinned_article.time}</span>
+                            <span class="smaller fade-text"><a class="non-underline" href="list/list.html?property=tag&name=${pinned_article.tag}">${pinned_article.tag}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="detail/module.html?post_id=${pinned_article.id}">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by ${pinned_article.author}&nbsp;<a class="non-underline" href="list/list.html?property=year&name=${pinned_article.year}">${pinned_article.year}</a>-${pinned_article.time}</span>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function add_page_button(){ //添加页面按钮
     var leftmost = document.createElement("div");
     leftmost.className = "page-button";
     leftmost.onclick = ()=>{
-        window.open("main?page=1","_self");
+        window.open("main.html?page=1","_self");
     };
     leftmost.innerHTML = `
     ❰❰
@@ -136,10 +136,10 @@ function add_page_button(){ //添加页面按钮
     previous.className = "page-button";
     previous.onclick = ()=>{
         if(page == 1){
-            window.open("main?page=1","_self");
+            window.open("main.html?page=1","_self");
         }
         else{
-            window.open("main?page="+(page-1),"_self");
+            window.open("main.html?page="+(page-1),"_self");
         }
     }
     previous.innerHTML = `
@@ -151,7 +151,7 @@ function add_page_button(){ //添加页面按钮
         var previouspage = document.createElement("div");
         previouspage.className = "page-button";
         previouspage.onclick = ()=>{
-            window.open("main?page="+(parseInt(page)-1),"_self");
+            window.open("main.html?page="+(parseInt(page)-1),"_self");
         };
         previouspage.innerHTML = `
         ${parseInt(page)-1}
@@ -162,7 +162,7 @@ function add_page_button(){ //添加页面按钮
     var current = document.createElement("div");
     current.className = "page-button";
     current.onclick = ()=>{
-        window.open("main?page="+page,"_self");
+        window.open("main.html?page="+page,"_self");
     };
     current.innerHTML = `
     ${page}
@@ -173,7 +173,7 @@ function add_page_button(){ //添加页面按钮
         var nextpage = document.createElement("div");
         nextpage.className = "page-button";
         nextpage.onclick = ()=>{
-            window.open("main?page="+(parseInt(page)+1),"_self");
+            window.open("main.html?page="+(parseInt(page)+1),"_self");
         };
         nextpage.innerHTML = `
         ${parseInt(page)+1}
@@ -188,7 +188,7 @@ function add_page_button(){ //添加页面按钮
         var lastpage = document.createElement("div");
         lastpage.className = "page-button";
         lastpage.onclick = ()=>{
-            window.open("main?page="+(page_num),"_self");
+            window.open("main.html?page="+(page_num),"_self");
         };
         lastpage.innerHTML = `
         ${page_num}
@@ -200,10 +200,10 @@ function add_page_button(){ //添加页面按钮
     next.className = "page-button";
     next.onclick = ()=>{
         if(page == page_num){
-            window.open("main?page="+(page_num),"_self");
+            window.open("main.html?page="+(page_num),"_self");
         }
         else{
-            window.open("main?page="+(parseInt(page)+1),"_self");
+            window.open("main.html?page="+(parseInt(page)+1),"_self");
         }
     }
     next.innerHTML = `
@@ -214,7 +214,7 @@ function add_page_button(){ //添加页面按钮
     var rightmost = document.createElement("div");
     rightmost.className = "page-button";
     rightmost.onclick = ()=>{
-        window.open("main?page="+page_num,"_self");
+        window.open("main.html?page="+page_num,"_self");
     };
     rightmost.innerHTML = `
     ❱❱

@@ -2,9 +2,9 @@
 var property = window.location.pathname.match(/\/([^/]+)$/)[1]; //是main还是module还是list
 document.addEventListener("DOMContentLoaded", function() {
     var path;
-    if(property=="main"){
+    if(property=="main.html"){
         path = "../json/navigator_intel.json";
-    }else if(property=="module" || property == "list"){
+    }else if(property=="module.html" || property == "list.html"){
         path = "../../json/navigator_intel.json";
     }
     var xhr = new XMLHttpRequest();
@@ -22,15 +22,15 @@ function post_navigator(intel){
     var prefix_url;
     var prefix_img;
     switch(property){
-        case "main":
+        case "main.html":
             prefix_url = "list/";
             prefix_img = "../"
             break;
-        case "module":
+        case "module.html":
             prefix_url = "../list/";
             prefix_img = "../../";
             break;
-        case "list":
+        case "list.html":
             prefix_url = "";
             prefix_img = "../../";
             break;
@@ -65,14 +65,14 @@ function post_navigator(intel){
                         <image xlink:href="${prefix_img}img/svg/${eng}_small.svg"></image>
                     </symbol>
                 </svg>
-                <span class="smaller"><a class="hidden-link" href="${prefix_url}list?property=${eng}&name=${item}">${item}</a></span>
+                <span class="smaller"><a class="hidden-link" href="${prefix_url}list.html?property=${eng}&name=${item}">${item}</a></span>
                 `
             }else{
                 li.innerHTML = `
                 <svg  class="icon-${eng}-small" viewBox="0 0 1024 1024" width="30%" height="50%">
                     <use xlink:href="#icon-${eng}-small"></use>
                 </svg>
-                <span class="smaller"><a class="hidden-link" href="${prefix_url}list?property=${eng}&name=${item}">${item}</a></span>
+                <span class="smaller"><a class="hidden-link" href="${prefix_url}list.html?property=${eng}&name=${item}">${item}</a></span>
                 `
             }
             one_bar_list.appendChild(li);

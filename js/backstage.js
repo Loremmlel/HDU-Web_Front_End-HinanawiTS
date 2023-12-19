@@ -133,7 +133,7 @@ function delete_article(id){
 }
 
 function modify_article(id){
-    window.location.href = `new_article?id=${id}`;//用new_article.js来处理吧。
+    window.location.href = `new_article.html?id=${id}`;//用new_article.js来处理吧。
 }
 
 function delete_comment(id){

@@ -67,7 +67,7 @@ function post_article(article){ //将文章信息写入页面
                 <div class="post-body">
                     <div class="post-article">
                         <div class="post-title">
-                            <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
+                            <a class="hidden-link" href="module.html?post_id=${article.id}">${article.title}</a>
                         </div>
                         <div class="post-text">
                             <div>
@@ -78,14 +78,14 @@ function post_article(article){ //将文章信息写入页面
                         <div class="post-image"></div>
                         <div class="post-dot"></div>
                         <div class="post-foot">
-                            <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
-                            <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                            <span class="smaller fade-text"><a class="non-underline" href="../list/list.html?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
+                            <span class="smaller fade-text"><a class="non-underline" href="module.html?post_id=${article.id}">#&nbsp;</a></span>
+                            <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list.html?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                         </div>
                     </div>
                     <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
-                            <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
-                            <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
+                            <a class="non-underline" href="module.html?post_id=${nearby_id[0]}">上一篇<<< </a>
+                            <a class="non-underline" href="module.html?post_id=${nearby_id[1]}"> >>>下一篇 </a>
                     </div>
                 </div>
         `;
@@ -96,7 +96,7 @@ function post_article(article){ //将文章信息写入页面
             <div class="post-body">
                 <div class="post-article">
                     <div class="post-title">
-                        <a class="hidden-link" href="module?post_id=${article.id}">${article.title}</a>
+                        <a class="hidden-link" href="module.html?post_id=${article.id}">${article.title}</a>
                         <select class="text-language" title="文章语言" style="transition:all 0.5s ease;margin-left:5%; border:2px solid #ccc;border-radius:5px;box-shadow:0 0 4px rgba(0,0,0,0.3);">
                             <option value="chs">简体中文</option>
                             <option value="eng">英文</option>
@@ -127,14 +127,14 @@ function post_article(article){ //将文章信息写入页面
                     </div>
                     <div class="post-dot"></div>
                     <div class="post-foot">
-                        <span class="smaller fade-text"><a class="non-underline" href="../list/list?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
-                        <span class="smaller fade-text"><a class="non-underline" href="module?post_id=${article.id}">#&nbsp;</a></span>
-                        <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
+                        <span class="smaller fade-text"><a class="non-underline" href="../list/list.html?property=tag&name=${article.tag}">${article.tag}&nbsp;</a></span>
+                        <span class="smaller fade-text"><a class="non-underline" href="module.html?post_id=${article.id}">#&nbsp;</a></span>
+                        <span class="smaller fade-text">by ${article.author}&nbsp;<a class="non-underline" href="../list/list.html?property=year&name=${article.year}">${article.year}</a>-${article.time}</span>
                     </div>
                 </div>
                 <div class="post-hyperlink" style="display: flex;justify-content: space-between;width: 100%;">
-                        <a class="non-underline" href="module?post_id=${nearby_id[0]}">上一篇<<< </a>
-                        <a class="non-underline" href="module?post_id=${nearby_id[1]}"> >>>下一篇 </a>
+                        <a class="non-underline" href="module.html?post_id=${nearby_id[0]}">上一篇<<< </a>
+                        <a class="non-underline" href="module.html?post_id=${nearby_id[1]}"> >>>下一篇 </a>
                 </div>
             </div>
             `;
