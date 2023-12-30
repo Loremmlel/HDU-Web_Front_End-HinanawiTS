@@ -20,7 +20,7 @@ function upload_list_from_json(path,property){
 function match_property(articles,property){
     var matched_articles = [];
     var head = document.querySelector("head");
-    var title = document.createElement("title");
+    var title = document.createElement("title");//是网页的标题。
     if(property[1]=="tag"){
         title.innerHTML += "标签";
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
@@ -40,7 +40,7 @@ function match_property(articles,property){
     }else if(property[1]=="author"){
         title.innerHTML += "作者";
         for(var i=articles.length-1;i>=0;i--){ //最新的显示在最上面
-            if(encodeURIComponent(articles[i].author) == property[2]){
+            if(encodeURIComponent(articles[i].author) == property[2]){ //encodeURIComponent函数是用于兼容中文URL的。
                 matched_articles.push(articles[i]);
             }
         }

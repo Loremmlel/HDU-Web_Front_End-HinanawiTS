@@ -14,17 +14,17 @@ function upload_from_json(path,num){
             var articles = JSON.parse(xhr.responseText);  //articles是一个对象，内有一个也叫articles的数组
             if(post_pinned_flag == 0 && page == 1){
                 post_pinned(articles); //置顶文章
-                post_pinned_flag = 1;
+                post_pinned_flag = 1;//表示是否已经上传过置顶文章，防止重复上传置顶文章。
             }
-            articles_num = articles.articles.length;
-            var splited_articles = split_articles(articles,num);
-            post_cutted(splited_articles,add_page_button);
+            articles_num = articles.articles.length;//获取总文件数，用于底部页面按钮的生成。
+            var splited_articles = split_articles(articles,num);//从读取到的JSON数据中筛选出合适的num篇文章。num一般是10。
+            post_cutted(splited_articles, add_page_button);//把筛选出来的文章再经过一定处理呈现到页面上。
+            //其中add_page_button是“回调函数”，在post_cutted函数执行完毕后再执行，用于在文章全部呈现后再加载跳转页面按钮。
         }
     }
     xhr.open("GET",path,true);
     xhr.setRequestHeader("Content-Type","application/json");
-    xhr.send();
-    
+    xhr.send(); 
 }
 function split_articles(articles,num){
     var splited_articles = [];
@@ -46,7 +46,7 @@ function post_cutted(articles,callback){
                         </div>
                         <div class="post-text">
                             <div>
-                                ${articles[i].content.substr(0,100).replace(/\n/g,"")} 
+                                ${articles[i].content.substr(0,100).replace(/\n/g,"")}
                                 <a class="non-underline" href="detail/module.html?post_id=${articles[i].id}">...阅读全文</a>
                             </div>
                         </div>
