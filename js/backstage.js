@@ -1,4 +1,5 @@
 var choice = "article"; //要进行crud的是文章、评论还是文章信息？
+//默认是文章。
 var data; //承接json数据
 document.addEventListener("DOMContentLoaded",function(){
     post_to_be_crud(choice); //总之无论如何先显示文章的管理
