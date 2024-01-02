@@ -200,7 +200,7 @@ function read_svg_from_cookie(){ //让刷新后不改变原有svg图像
     //.*$这部分匹配了 svgState 后面可能跟着任意数量的字符，直到字符串的结尾。
     //|^.*$：或者匹配任意字符的开头和结尾。
     var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)svgState\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    //说实话我现在也不知道为什么搞成这样子。想不明白。但能用就不动了。
+    //******说实话我现在也不知道为什么搞成这样子。想不明白。但能用就不动了。*******//
     if (cookieValue) {
         var svgState = JSON.parse(cookieValue);
         current_path_index  = svgState.currentPathIndex;

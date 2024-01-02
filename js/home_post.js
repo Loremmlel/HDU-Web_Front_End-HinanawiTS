@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded",function(){ //主页面加载后，
     console.log(document.referrer);
     upload_from_json("../json/articles/articles.json",10);
 })
-//判断整个文档滚动至底部
 function upload_from_json(path,num){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -59,20 +58,16 @@ function post_cutted(articles,callback){
                     </div>
                 </div>
         `;
-        post_cutted_timing(new_post,i);
+        setTimeout(()=>{
+            var content_left = document.getElementsByClassName("content-left")[0];
+            let blank = document.createElement("div");//文章下方的空白
+            blank.className = "post-blank"; 
+            content_left.appendChild(new_post);
+            content_left.appendChild(blank); 
+        },i*300);
     }
     setTimeout(callback,articles.length*300);
 }
-function post_cutted_timing(new_post,i){ //定时post，方便展现动画~
-    setTimeout(()=>{
-        var content_left = document.getElementsByClassName("content-left")[0];
-        let blank = document.createElement("div");//文章下方的空白
-        blank.className = "post-blank"; 
-        content_left.appendChild(new_post);
-        content_left.appendChild(blank); 
-    },i*300);
-}
-
 function post_pinned(articles){
     var pinned_article = {}
     var flag = 0;
