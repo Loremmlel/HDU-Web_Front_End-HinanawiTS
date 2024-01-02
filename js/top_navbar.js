@@ -130,41 +130,49 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
             document.cookie = "cssState=" + JSON.stringify(cssState) + `;domain=${url};path=/`;
         });
     }
+    var isGithub = false;
+    if (window.location.href.includes(github)) {
+        isGithub = true;
+    }
     if(button_github){
         button_github.addEventListener("click", function () {
-            window.open("https://github.com/Loremmlel","_blank");
+            window.open("https://github.com/Loremmlel","_blank");   
         });
     }else{
         console.error("button-github not found");
     }
     if(button_mainpage){
         button_mainpage.addEventListener("click", function () {
-                window.open("/html/main.html?page=1","_self");
+            if (isGithub) {
+                window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/main.html?page=1", "_self");
+            } else {
+                window.open("/html/main.html?page=1", "_self");   
+            }
         })
     }else{
         console.error("button-mainpage not found");
     }
     if(button_new_article){
         button_new_article.addEventListener("click", function () {
-            window.open("/html/new_article.html","_self");
+            if (isGithub) {
+                window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/new_article.html","_self")
+            } else {
+                window.open("/html/new_article.html","_self");   
+            }
         });
     }else{
         console.error("button-new-article not found");
     }
     if(button_backstage){
         button_backstage.addEventListener("click", function () {
-            window.open("/html/login.html","_self");
+            if (isGithub) {
+                window.open("https://loremmlel.github.io/HDU-Web_Front_End-HinanawiTS/html/login.html", "_self");
+            } else {
+                window.open("/html/login.html","_self");   
+            }
         });
     }else{
         console.error("button-backstage not found");
-    }
-    if(referrer == "http://www.hinanawits.com/"){ //第一次打开主页时的referrer是这个地址。可以用于统计浏览量。
-        var statistical_request = new XMLHttpRequest();
-        statistical_request.open("GET","../php/statistic.php",true);
-        if(statistical_request.status == 200){
-            console.log("statistical_request success");
-        }
-        statistical_request.send();
     }
 });
 function switch_svg(svg_path,svg_index,svg_element){ //切换svg图像
