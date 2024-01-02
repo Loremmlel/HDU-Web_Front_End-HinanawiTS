@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () { // 页面加载完�
         });
     }
     var isGithub = false;
-    if (window.location.href.includes(github)) {
+    if (window.location.href.includes("github")) {
         isGithub = true;
     }
     if(button_github){
